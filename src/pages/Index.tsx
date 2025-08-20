@@ -1,11 +1,7 @@
-import PricingPlans from "@/components/PricingPlans";
+import LandingPage from "@/components/LandingPage";
 
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      <PricingPlans />
-    </div>
-  );
+  return <LandingPage />;
 };
 
 export default Index;
