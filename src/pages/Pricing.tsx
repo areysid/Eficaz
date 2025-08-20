@@ -11,9 +11,11 @@ const Pricing = () => {
         <div className="container flex h-14 items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
             <ArrowLeft className="h-4 w-4" />
-            <div className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              EFICAZ
-            </div>
+            <img 
+              src="/lovable-uploads/8b1d9995-e628-4d9d-bd6e-ccc312b188ca.png" 
+              alt="EFICAZ Logo" 
+              className="h-8 w-auto"
+            />
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
             <Link to="/">

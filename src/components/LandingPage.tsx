@@ -11,9 +11,11 @@ const LandingPage = () => {
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-14 items-center justify-between">
           <div className="flex items-center space-x-2">
-            <div className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              EFICAZ
-            </div>
+            <img 
+              src="/lovable-uploads/8b1d9995-e628-4d9d-bd6e-ccc312b188ca.png" 
+              alt="EFICAZ Logo" 
+              className="h-8 w-auto"
+            />
           </div>
           <nav className="hidden md:flex items-center space-x-6">
             <Button variant="ghost" className="text-sm font-medium">Features</Button>
@@ -174,9 +176,11 @@ const LandingPage = () => {
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <div className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4">
-                EFICAZ
-              </div>
+              <img 
+                src="/lovable-uploads/8b1d9995-e628-4d9d-bd6e-ccc312b188ca.png" 
+                alt="EFICAZ Logo" 
+                className="h-8 w-auto mb-4"
+              />
               <p className="text-sm text-muted-foreground">
                 AI-powered recruitment platform transforming the way companies hire talent.
               </p>
