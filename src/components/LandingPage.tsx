@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Zap, Shield, Users, ArrowRight, Star } from "lucide-react";
-import PricingPlans from "./PricingPlans";
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   return (
@@ -17,9 +17,13 @@ const LandingPage = () => {
           </div>
           <nav className="hidden md:flex items-center space-x-6">
             <Button variant="ghost" className="text-sm font-medium">Features</Button>
-            <Button variant="ghost" className="text-sm font-medium">Pricing</Button>
+            <Link to="/pricing">
+              <Button variant="ghost" className="text-sm font-medium">Pricing</Button>
+            </Link>
             <Button variant="ghost" className="text-sm font-medium">About</Button>
-            <Button variant="default" className="text-sm font-medium">Get Started</Button>
+            <Link to="/pricing">
+              <Button variant="default" className="text-sm font-medium">Get Started</Button>
+            </Link>
           </nav>
         </div>
       </header>
@@ -42,13 +46,12 @@ const LandingPage = () => {
               Find the perfect talent faster than ever before.
             </p>
             <div className="mt-10 flex items-center justify-center gap-6">
-              <Button size="lg" className="h-12 px-8">
-                Start Free Trial
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button variant="outline" size="lg" className="h-12 px-8">
-                Watch Demo
-              </Button>
+              <Link to="/pricing">
+                <Button size="lg" className="h-12 px-8">
+                  Get Started
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -144,21 +147,6 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-20 sm:py-32">
-        <div className="container">
-          <div className="mx-auto max-w-2xl text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Choose Your Plan
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Select the perfect plan for your recruitment needs
-            </p>
-          </div>
-          <PricingPlans />
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-20 sm:py-32 bg-primary text-primary-foreground">
         <div className="container">
@@ -170,10 +158,12 @@ const LandingPage = () => {
               Join thousands of companies already using EFICAZ to find top talent faster.
             </p>
             <div className="mt-8">
-              <Button size="lg" variant="secondary" className="h-12 px-8">
-                Start Your Free Trial
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              <Link to="/pricing">
+                <Button size="lg" variant="secondary" className="h-12 px-8">
+                  Get Started
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
