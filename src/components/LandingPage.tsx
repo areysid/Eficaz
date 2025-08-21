@@ -1,32 +1,62 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, Zap, Shield, Users, ArrowRight, Star } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { CheckCircle, Zap, Shield, Users, ArrowRight, Star, Menu } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   return (
     <div className="min-h-screen bg-background">
+      {/* AI Recruiter Header */}
+      <div className="bg-accent/10 py-2">
+        <div className="container text-center">
+          <p className="text-sm text-muted-foreground">
+            <span className="font-medium text-accent">AI Recruiter</span> - Powered by EFICAZ
+          </p>
+        </div>
+      </div>
+      
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-14 items-center justify-between">
           <div className="flex items-center space-x-2">
-            <img 
-              src="/lovable-uploads/8b1d9995-e628-4d9d-bd6e-ccc312b188ca.png" 
-              alt="EFICAZ Logo" 
-              className="h-8 w-auto"
-            />
+            <Link to="/" className="flex items-center space-x-2">
+              <img 
+                src="/lovable-uploads/8b1d9995-e628-4d9d-bd6e-ccc312b188ca.png" 
+                alt="EFICAZ Logo" 
+                className="h-8 w-auto"
+              />
+              <span className="text-sm font-medium text-muted-foreground">| AI Recruiter</span>
+            </Link>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
             <Button variant="ghost" className="text-sm font-medium">Features</Button>
-            <Link to="/pricing">
-              <Button variant="ghost" className="text-sm font-medium">Pricing</Button>
-            </Link>
-            <Button variant="ghost" className="text-sm font-medium">About</Button>
-            <Link to="/pricing">
-              <Button variant="default" className="text-sm font-medium">Get Started</Button>
-            </Link>
+            <Button variant="ghost" className="text-sm font-medium">Solutions</Button>
+            <Button variant="ghost" className="text-sm font-medium">Resources</Button>
+            <Button variant="ghost" className="text-sm font-medium">Company</Button>
+            <Button asChild variant="outline" size="sm">
+              <Link to="/ai-recruiter/pricing">Pricing</Link>
+            </Button>
           </nav>
+          <Sheet>
+            <SheetTrigger asChild className="md:hidden">
+              <Button variant="ghost" size="icon">
+                <Menu className="h-5 w-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right">
+              <div className="flex flex-col space-y-4 mt-6">
+                <Button variant="ghost" className="justify-start">Features</Button>
+                <Button variant="ghost" className="justify-start">Solutions</Button>
+                <Button variant="ghost" className="justify-start">Resources</Button>
+                <Button variant="ghost" className="justify-start">Company</Button>
+                <Button asChild variant="outline" className="justify-start">
+                  <Link to="/ai-recruiter/pricing">Pricing</Link>
+                </Button>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </header>
 
@@ -48,7 +78,7 @@ const LandingPage = () => {
               Find the perfect talent faster than ever before.
             </p>
             <div className="mt-10 flex items-center justify-center gap-6">
-              <Link to="/pricing">
+              <Link to="/ai-recruiter/pricing">
                 <Button size="lg" className="h-12 px-8">
                   Get Started
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -160,7 +190,7 @@ const LandingPage = () => {
               Join thousands of companies already using EFICAZ to find top talent faster.
             </p>
             <div className="mt-8">
-              <Link to="/pricing">
+              <Link to="/ai-recruiter/pricing">
                 <Button size="lg" variant="secondary" className="h-12 px-8">
                   Get Started
                   <ArrowRight className="ml-2 h-4 w-4" />
