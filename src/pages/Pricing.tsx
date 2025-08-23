@@ -21,27 +21,19 @@ const Pricing = () => {
             <Link to="/">
               <Button variant="ghost" className="text-sm font-medium">Home</Button>
             </Link>
-            <Button variant="ghost" className="text-sm font-medium">Features</Button>
+            {/* <Button variant="ghost" className="text-sm font-medium">Features</Button>
             <Button variant="ghost" className="text-sm font-medium">About</Button>
-            <Button variant="default" className="text-sm font-medium">Contact</Button>
+            <Button variant="default" className="text-sm font-medium">Contact</Button> */}
           </nav>
         </div>
       </header>
 
       {/* Pricing Section */}
-      <section className="py-20 sm:py-32">
+ 
         <div className="container">
-          <div className="mx-auto max-w-2xl text-center mb-16">
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Choose Your Plan
-            </h1>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Select the perfect plan for your recruitment needs
-            </p>
-          </div>
           <PricingPlans />
         </div>
-      </section>
+ 
     </div>
   );
 };

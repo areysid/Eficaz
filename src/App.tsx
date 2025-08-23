@@ -16,19 +16,18 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <MainLayout>
+          {/* <MainLayout> */}
             <Routes>
-              {/* Redirect root to AI Recruiter */}
-              <Route path="/" element={<Navigate to="/ai-recruiter" />} />
+              {/* Root shows AI Recruiter */}
+              <Route path="/" element={<AIRecruiter />} />
 
-              {/* AI Recruiter pages */}
-              <Route path="/ai-recruiter" element={<AIRecruiter />} />
-              <Route path="/ai-recruiter/pricing" element={<Pricing />} />
+              {/* Pricing page */}
+              <Route path="/pricing" element={<Pricing />} />
 
-              {/* Fallback for unknown routes */}
-              <Route path="*" element={<Navigate to="/ai-recruiter" />} />
+              {/* Fallback: redirect unknown routes to root */}
+              <Route path="*" element={<Navigate to="/" />} />
             </Routes>
-          </MainLayout>
+          {/* </MainLayout> */}
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

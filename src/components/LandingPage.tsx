@@ -1,45 +1,110 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { CheckCircle, Zap, Shield, Users, ArrowRight, Star, Menu } from "lucide-react";
+import {
+  CheckCircle,
+  Zap,
+  Shield,
+  Users,
+  ArrowRight,
+  Star,
+  Menu,
+} from "lucide-react";
 import { Link } from "react-router-dom";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useState } from "react";
 
-const LandingPage = () => {
+const AIRecruiter = () => {
+  // Animated counter for benefits section
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    let start = 0;
+    const end = 75;
+    const duration = 1500;
+    const stepTime = Math.abs(Math.floor(duration / end));
+    const timer = setInterval(() => {
+      start += 1;
+      setCount(start);
+      if (start === end) clearInterval(timer);
+    }, stepTime);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Track scroll for translucent header effect
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Parallax effect for background
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 500], [0, 100]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -100]);
+
   return (
-    <div className="min-h-screen bg-background">
-      {/* AI Recruiter Header */}
-      <div className="bg-accent/10 py-2">
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Parallax Background Shapes */}
+      <motion.div
+        className="absolute -top-20 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-3xl"
+        style={{ y: y1 }}
+      />
+      <motion.div
+        className="absolute top-40 -right-40 w-[30rem] h-[30rem] bg-accent/20 rounded-full blur-3xl"
+        style={{ y: y2 }}
+      />
+
+      {/* Top Banner */}
+      <div className=" top-0 left-0 w-full bg-accent/10 py-2 z-50">
         <div className="container text-center">
-          <p className="text-sm text-muted-foreground">
-            <span className="font-medium text-accent">AI Recruiter</span> - Powered by EFICAZ
-          </p>
+          {/* <motion.p
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-sm text-muted-foreground"
+          > */}
+            <span className="font-medium text-accent">AI Recruiter</span> – Powered by EFICAZ
+          {/* </motion.p> */}
         </div>
       </div>
-      
+
       {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-14 items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <Link to="/" className="flex items-center space-x-2">
-              <img 
-                src="/lovable-uploads/8b1d9995-e628-4d9d-bd6e-ccc312b188ca.png" 
-                alt="EFICAZ Logo" 
-                className="h-8 w-auto"
-              />
-              <span className="text-sm font-medium text-muted-foreground">| AI Recruiter</span>
-            </Link>
-          </div>
+      <header
+        className={`fixed left-0 w-full z-40 border-b transition-all duration-300 ${
+          scrolled
+            ? "top-0 bg-background/70 backdrop-blur-md shadow-sm h-14"
+            : "top-8 bg-background/90 h-16"
+        }`}
+      >
+        <div className="container flex h-full items-center justify-between">
+          <Link to="/" className="flex items-center space-x-2">
+            <img
+              src="/lovable-uploads/8b1d9995-e628-4d9d-bd6e-ccc312b188ca.png"
+              alt="EFICAZ Logo"
+              className="h-8 w-auto"
+            />
+            <span className="text-sm font-medium text-muted-foreground">
+              | AI Recruiter
+            </span>
+          </Link>
           <nav className="hidden md:flex items-center space-x-6">
-            <Button variant="ghost" className="text-sm font-medium">Features</Button>
-            <Button variant="ghost" className="text-sm font-medium">Solutions</Button>
-            <Button variant="ghost" className="text-sm font-medium">Resources</Button>
-            <Button variant="ghost" className="text-sm font-medium">Company</Button>
-            <Button asChild variant="outline" size="sm">
-              <Link to="/ai-recruiter/pricing">Pricing</Link>
+            <Button
+              asChild
+              variant="outline"
+              size="sm"
+              className="transition hover:scale-105"
+            >
+              <Link to="/pricing">Pricing</Link>
             </Button>
           </nav>
-          <Sheet>
+          <Sheet >
             <SheetTrigger asChild className="md:hidden">
               <Button variant="ghost" size="icon">
                 <Menu className="h-5 w-5" />
@@ -47,12 +112,8 @@ const LandingPage = () => {
             </SheetTrigger>
             <SheetContent side="right">
               <div className="flex flex-col space-y-4 mt-6">
-                <Button variant="ghost" className="justify-start">Features</Button>
-                <Button variant="ghost" className="justify-start">Solutions</Button>
-                <Button variant="ghost" className="justify-start">Resources</Button>
-                <Button variant="ghost" className="justify-start">Company</Button>
                 <Button asChild variant="outline" className="justify-start">
-                  <Link to="/ai-recruiter/pricing">Pricing</Link>
+                  <Link to="/pricing">Pricing</Link>
                 </Button>
               </div>
             </SheetContent>
@@ -60,191 +121,196 @@ const LandingPage = () => {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 sm:py-32">
-        <div className="absolute inset-0 bg-[var(--gradient-hero)]" />
-        <div className="container relative">
-          <div className="mx-auto max-w-4xl text-center">
+      {/* Hero */}
+      <section className="relative overflow-hidden py-24 sm:py-36 pt-40">
+        <div className="container relative z-10">
+          <motion.div
+            className="mx-auto max-w-4xl text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+          >
             <Badge variant="secondary" className="mb-4">
-              <Star className="mr-1 h-3 w-3" />
-              AI-Powered Recruitment
+              <Star className="mr-1 h-3 w-3" /> AI-Powered Recruitment
             </Badge>
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
-              Transform Your
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"> Hiring Process</span>
+              Transform Your{" "}
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Hiring Process
+              </span>
             </h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-2xl mx-auto">
-              EFICAZ revolutionizes recruitment with AI-powered screening and intelligent candidate matching. 
-              Find the perfect talent faster than ever before.
+              EFICAZ revolutionizes recruitment with AI-powered screening and intelligent candidate
+              matching. Find the perfect talent faster than ever before.
             </p>
-            <div className="mt-10 flex items-center justify-center gap-6">
-              <Link to="/ai-recruiter/pricing">
-                <Button size="lg" className="h-12 px-8">
+            <div className="mt-10 flex justify-center">
+              <Link to="/pricing">
+                <Button
+                  size="lg"
+                  className="h-12 px-8 transition-transform hover:scale-110 hover:shadow-xl"
+                >
                   Get Started
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 sm:py-32">
+      {/* Divider */}
+      <div className="w-full h-16 bg-gradient-to-b from-background to-green-50 skew-y-2 -mt-10"></div>
+
+      {/* Features */}
+      <section className="py-20 sm:py-32 bg-green-50 relative z-10">
         <div className="container">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Why Choose EFICAZ?
-            </h2>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Why Choose EFICAZ?</h2>
             <p className="mt-4 text-lg text-muted-foreground">
               Our AI-powered platform streamlines every aspect of recruitment
             </p>
           </div>
-          
+
           <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
-            <Card className="relative overflow-hidden border-0 shadow-[var(--shadow-elegant)] transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <Zap className="h-6 w-6 text-primary" />
-                </div>
-                <CardTitle>AI-Powered Screening</CardTitle>
-                <CardDescription>
-                  Intelligent algorithms analyze resumes and match candidates based on skills, experience, and cultural fit.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="relative overflow-hidden border-0 shadow-[var(--shadow-elegant)] transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                  <Shield className="h-6 w-6 text-accent" />
-                </div>
-                <CardTitle>Data Security</CardTitle>
-                <CardDescription>
-                  Enterprise-grade security ensures your candidate data and company information remain protected.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="relative overflow-hidden border-0 shadow-[var(--shadow-elegant)] transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <Users className="h-6 w-6 text-primary" />
-                </div>
-                <CardTitle>Team Collaboration</CardTitle>
-                <CardDescription>
-                  Seamless collaboration tools for hiring teams to review, discuss, and make decisions together.
-                </CardDescription>
-              </CardHeader>
-            </Card>
+            {[
+              {
+                icon: <Zap className="h-6 w-6 text-primary" />,
+                title: "AI-Powered Screening",
+                desc: "Intelligent algorithms analyze resumes and match candidates based on skills, experience, and cultural fit.",
+              },
+              {
+                icon: <Shield className="h-6 w-6 text-accent" />,
+                title: "Data Security",
+                desc: "Enterprise-grade security ensures your candidate data and company information remain protected.",
+              },
+              {
+                icon: <Users className="h-6 w-6 text-primary" />,
+                title: "Team Collaboration",
+                desc: "Seamless tools for hiring teams to review, discuss, and make decisions together.",
+              },
+            ].map((f, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.2 }}
+                viewport={{ once: true }}
+              >
+                <Card className="h-full flex flex-col justify-between relative overflow-hidden border border-white/20 shadow-lg backdrop-blur-md bg-white/60 hover:bg-white/80 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                  <CardHeader className="flex-1 flex flex-col items-center text-center">
+                    <motion.div
+                      whileHover={{ scale: 1.2, rotate: 10 }}
+                      className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4"
+                    >
+                      {f.icon}
+                    </motion.div>
+                    <CardTitle>{f.title}</CardTitle>
+                    <CardDescription className="mt-2">{f.desc}</CardDescription>
+                  </CardHeader>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-20 sm:py-32 bg-muted/50">
-        <div className="container">
-          <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
-                Reduce Hiring Time by 75%
-              </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Our AI algorithms pre-screen candidates, identify top matches, and provide detailed insights 
-                to help you make faster, more informed hiring decisions.
-              </p>
-              <ul className="space-y-4">
-                {[
-                  "Automated resume screening and ranking",
-                  "Intelligent candidate matching algorithms",
-                  "Real-time collaboration and feedback",
-                  "Comprehensive analytics and reporting"
-                ].map((benefit, index) => (
-                  <li key={index} className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
-                    <span className="text-muted-foreground">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="relative">
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 p-8 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl font-bold text-primary mb-2">75%</div>
-                  <div className="text-xl text-muted-foreground">Faster Hiring</div>
-                </div>
+      {/* Divider */}
+      <div className="w-full h-16 bg-gradient-to-b from-green-50 to-muted/50 -skew-y-2"></div>
+
+      {/* Benefits */}
+      <section className="py-20 sm:py-32 bg-muted/50 relative z-10">
+        <div className="container grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl font-bold sm:text-4xl mb-6">Reduce Hiring Time by 75%</h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Our AI pre-screens candidates, identifies top matches, and provides insights to help
+              you make faster, more informed hiring decisions.
+            </p>
+            <ul className="space-y-4">
+              {[
+                "Automated resume screening",
+                "Intelligent candidate matching",
+                "Real-time collaboration",
+                "Analytics and reporting",
+              ].map((b, i) => (
+                <li key={i} className="flex items-center">
+                  <CheckCircle className="h-5 w-5 text-primary mr-3" />
+                  <span className="text-muted-foreground">{b}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 p-8 flex items-center justify-center shadow-lg">
+              <div className="text-center">
+                <div className="text-6xl font-bold text-primary mb-2">{count}%</div>
+                <div className="text-xl text-muted-foreground">Faster Hiring</div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 sm:py-32 bg-primary text-primary-foreground">
-        <div className="container">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Ready to Transform Your Hiring?
-            </h2>
-            <p className="mt-4 text-lg opacity-90">
-              Join thousands of companies already using EFICAZ to find top talent faster.
-            </p>
-            <div className="mt-8">
-              <Link to="/ai-recruiter/pricing">
-                <Button size="lg" variant="secondary" className="h-12 px-8">
-                  Get Started
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-            </div>
+      {/* CTA */}
+      <motion.section
+        className="py-20 sm:py-32 bg-primary text-primary-foreground relative z-10"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <div className="container text-center">
+          <h2 className="text-3xl font-bold sm:text-4xl">Ready to Transform Your Hiring?</h2>
+          <p className="mt-4 text-lg opacity-90">
+            Join companies already using EFICAZ to find top talent faster.
+          </p>
+          <div className="mt-8">
+            <Link to="/pricing">
+              <Button
+                size="lg"
+                variant="secondary"
+                className="h-12 px-8 transition-transform hover:scale-110 hover:shadow-xl"
+              >
+                Get Started
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Footer */}
-      <footer className="border-t py-12">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <img 
-                src="/lovable-uploads/8b1d9995-e628-4d9d-bd6e-ccc312b188ca.png" 
-                alt="EFICAZ Logo" 
-                className="h-8 w-auto mb-4"
-              />
-              <p className="text-sm text-muted-foreground">
-                AI-powered recruitment platform transforming the way companies hire talent.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Product</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>Features</li>
-                <li>Pricing</li>
-                <li>API</li>
-                <li>Integrations</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Company</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>About</li>
-                <li>Blog</li>
-                <li>Careers</li>
-                <li>Contact</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Support</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>Help Center</li>
-                <li>Documentation</li>
-                <li>Community</li>
-                <li>Status</li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-            © 2024 EFICAZ. All rights reserved.
+      <footer className="border-t py-12 relative z-10">
+        <div className="container text-center space-y-4">
+          <img
+            src="/lovable-uploads/8b1d9995-e628-4d9d-bd6e-ccc312b188ca.png"
+            alt="EFICAZ Logo"
+            className="h-8 w-auto mx-auto"
+          />
+          <p className="text-sm text-muted-foreground">
+            © 2024 EFICAZ. AI-powered recruitment platform transforming the way companies hire talent.
+          </p>
+          <div className="flex justify-center gap-6 text-sm text-muted-foreground">
+            <Link to="/pricing" className="hover:text-primary transition">
+              Pricing
+            </Link>
+            <a
+              href="mailto:contact@eficaz.ai"
+              className="hover:text-primary transition"
+            >
+              Contact
+            </a>
           </div>
         </div>
       </footer>
@@ -252,4 +318,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default AIRecruiter;
