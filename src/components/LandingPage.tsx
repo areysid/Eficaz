@@ -89,7 +89,7 @@ const AIRecruiter = () => {
         <div className="container flex h-full items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
             <img
-              src="/lovable-uploads/8b1d9995-e628-4d9d-bd6e-ccc312b188ca.png"
+              src="/Logo.png"
               alt="EFICAZ Logo"
               className="h-8 w-auto"
             />
@@ -317,7 +317,7 @@ const AIRecruiter = () => {
       <footer className="border-t py-12 relative z-10">
         <div className="container text-center space-y-4">
           <img
-            src="/lovable-uploads/8b1d9995-e628-4d9d-bd6e-ccc312b188ca.png"
+            src="/Logo.png"
             alt="EFICAZ Logo"
             className="h-8 w-auto mx-auto"
           />
