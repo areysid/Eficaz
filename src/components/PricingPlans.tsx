@@ -7,106 +7,154 @@ import { Link } from "react-router-dom";
 
 const PricingPlans = () => {
   const withDataPlans = [
-    {
-      name: "Mixed",
-      successRate: "80%",
-      price: "262.5",
-      description: "Best of Both Worlds",
-      features: [
-        "Only Direct Calls will be done",
-        "Voice screening: No CV screening",
-        "6 mins call limit, TAT - 6 Business hrs (3 hrs sourcing)",
-      ],
-    },
+
     {
       name: "Direct",
       successRate: "70%",
       price: "275",
       description: "Direct approach with AI calling",
       features: [
-        "Only Direct Calls will be done",
-        "Voice screening: No CV screening",
-        "6 mins call limit, TAT - 6 Business hrs (3 hrs sourcing)",
+        "Direct Calls will be done",
+        "Voice screening + CV screening",
+        "6 minutes call limit, TAT - 6 Business hours (3 hours sourcing)",
       ],
     },
     {
-      name: "Via Forms",
+      name: "Indirect",
       successRate: "70%",
       price: "250",
       description: "Form-based screening with AI",
       features: [
-        "Direct Call (3 mins) + Form Data",
+        "Direct Call (3 minutes) + Form Data",
         "CV Screening, Audio Screening",
         "Cross-verified through multiple AI platforms",
         "Audio Recording from Form + AI call",
-        "Subtle experience with WhatsApp msg vs direct call",
+        "Subtle experience with WhatsApp messages",
+      ],
+    },
+        {
+      name: "Mixed",
+      successRate: "80%",
+      price: "262.5",
+      description: "Best of Both Worlds",
+      features: [
+        "Indirect calls precede direct calls for effective engagement",
+        "Voice screening + CV screening",
+        "3-6 minutess call limit",
       ],
     },
   ];
 
   const withoutDataPlans = [
-    {
-      name: "Mixed",
-      successRate: "80%",
-      price: "187.5",
-      description: "Best of Both Worlds",
-      features: [
-        "Only Direct Calls will be done",
-        "Voice screening: No CV screening",
-        "6 mins call limit, TAT - 6 Business hrs (3 hrs sourcing)",
-      ],
-    },
+
     {
       name: "Direct",
       successRate: "70%",
       price: "200",
       description: "Direct approach with AI calling",
       features: [
-        "Only Direct Calls will be done",
-        "Voice screening: No CV screening",
-        "6 mins call limit, TAT - 6 Business hrs (3 hrs sourcing)",
+        "Direct Calls will be done",
+        "Voice screening + CV screening",
+        "6 minutes call limit, TAT - 6 Business hours (3 hours sourcing)",
       ],
     },
     {
-      name: "Via Forms",
+      name: "Indirect",
       successRate: "70%",
       price: "175",
       description: "Form-based screening with AI",
       features: [
-        "Direct Call (3 mins) + Form Data",
+        "Direct Call (3 minutes) + Form Data",
         "CV Screening, Audio Screening",
         "Cross-verified through multiple AI platforms",
         "Audio Recording from Form + AI call",
-        "Subtle experience with WhatsApp msg vs direct call",
+        "Subtle experience with WhatsApp messages",
+      ],
+    },
+        {
+      name: "Mixed",
+      successRate: "80%",
+      price: "187.5",
+      description: "Best of Both Worlds",
+      features: [
+        "Indirect calls precede direct calls for effective engagement",
+        "Voice screening + CV screening",
+        "3-6 minutes call limit",
       ],
     },
   ];
 
+  // const PlanCard = ({ plan }: { plan: any }) => (
+  //   <motion.div
+  //     whileHover={{ scale: 1.03 }}
+  //     whileTap={{ scale: 0.98 }}
+  //     initial={{ opacity: 0, y: 40 }}
+  //     whileInView={{ opacity: 1, y: 0 }}
+  //     transition={{ duration: 0.4 }}
+  //     viewport={{ once: true }}
+  //   >
+  //     <Card className="relative h-full transition-all duration-300 hover:shadow-lg border-2 hover:border-primary/30">
+  //       <CardHeader className="text-center pb-4">
+  //         <div className="flex items-center justify-between mb-2">
+  //           <Badge variant="secondary" className="text-xs">
+  //             Success Rate: {plan.successRate}
+  //           </Badge>
+  //           <div className="text-right">
+  //             <div className="text-3xl font-bold text-primary">₹{plan.price}</div>
+  //             <div className="text-sm text-muted-foreground">per screening</div>
+  //           </div>
+  //         </div>
+  //         <CardTitle className="text-xl">{plan.name}</CardTitle>
+  //         <CardDescription className="text-sm">{plan.description}</CardDescription>
+  //       </CardHeader>
+  //       <CardContent className="space-y-4">
+  //         <div className="space-y-3">
+  //           {plan.features.map((feature: string, index: number) => (
+  //             <div key={index} className="flex items-start gap-2">
+  //               <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+  //               <span className="text-sm text-muted-foreground leading-relaxed">
+  //                 {feature}
+  //               </span>
+  //             </div>
+  //           ))}
+  //         </div>
+  //         <Button
+  //           className="w-full mt-6"
+  //           variant= "outline"
+  //         >
+  //           Choose {plan.name}
+  //         </Button>
+  //       </CardContent>
+  //     </Card>
+  //   </motion.div>
+  // );
+
   const PlanCard = ({ plan }: { plan: any }) => (
-    <motion.div
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.98 }}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-      viewport={{ once: true }}
-    >
-      <Card className="relative h-full transition-all duration-300 hover:shadow-lg border-2 hover:border-primary/30">
-        <CardHeader className="text-center pb-4">
-          <div className="flex items-center justify-between mb-2">
-            <Badge variant="secondary" className="text-xs">
-              Success Rate: {plan.successRate}
-            </Badge>
-            <div className="text-right">
-              <div className="text-3xl font-bold text-primary">₹{plan.price}</div>
-              <div className="text-sm text-muted-foreground">per screening</div>
-            </div>
+  <motion.div
+    whileHover={{ scale: 1.03 }}
+    whileTap={{ scale: 0.98 }}
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.4 }}
+    viewport={{ once: true }}
+  >
+    <Card className="relative h-full flex flex-col transition-all duration-300 hover:shadow-lg border-2 hover:border-primary/30">
+      <CardHeader className="text-center pb-4">
+        <div className="flex items-center justify-between mb-2">
+          <Badge variant="secondary" className="text-xs">
+            Success Rate: {plan.successRate}
+          </Badge>
+          <div className="text-right">
+            <div className="text-3xl font-bold text-primary">₹{plan.price}</div>
+            <div className="text-sm text-muted-foreground">per screening</div>
           </div>
-          <CardTitle className="text-xl">{plan.name}</CardTitle>
-          <CardDescription className="text-sm">{plan.description}</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-3">
+        </div>
+        <CardTitle className="text-xl">{plan.name}</CardTitle>
+        <CardDescription className="text-sm">{plan.description}</CardDescription>
+      </CardHeader>
+
+        <CardContent className="flex flex-col flex-1">
+          <div className="space-y-3 flex-1">
             {plan.features.map((feature: string, index: number) => (
               <div key={index} className="flex items-start gap-2">
                 <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
@@ -116,16 +164,18 @@ const PricingPlans = () => {
               </div>
             ))}
           </div>
-          <Button
-            className="w-full mt-6"
-            variant= "outline"
-          >
-            Choose {plan.name}
-          </Button>
+
+          {/* Add spacing before button */}
+          <div className="pt-6">
+            <Button className="w-full" variant="outline">
+              Choose {plan.name}
+            </Button>
+          </div>
         </CardContent>
-      </Card>
-    </motion.div>
-  );
+
+    </Card>
+  </motion.div>
+);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -155,12 +205,28 @@ const PricingPlans = () => {
               </motion.p>
             </div>
 
+            {/* Cost Saving Highlight */}
+            <motion.div
+              className="text-center mb-16"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <div className="inline-block bg-green-600 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg">
+                Reduce your hiring costs by up to <span className="font-bold">80%</span>
+              </div>
+            </motion.div>
+
             {/* With Data Plans */}
             <div className="mb-20">
               <div className="text-center mb-10">
                 <h2 className="text-3xl font-bold mb-2">With Data (Eficaz Sourcing)</h2>
                 <p className="text-muted-foreground">
                   Enhanced screening with comprehensive data provided by Eficaz
+                </p>
+                <p className="text-muted-foreground">
+                  TAT - 6 Business hours (3 hours sourcing)
                 </p>
               </div>
               <div className="grid md:grid-cols-3 gap-8">
@@ -173,9 +239,12 @@ const PricingPlans = () => {
             {/* Without Data Plans */}
             <div>
               <div className="text-center mb-10">
-                <h2 className="text-3xl font-bold mb-2">Without Data (Your Sourcing)</h2>
+                <h2 className="text-3xl font-bold mb-2">Sourcing with Your Data</h2>
                 <p className="text-muted-foreground">
                   Efficient screening with your own sourced candidates
+                </p>
+                <p className="text-muted-foreground">
+                  TAT - 3 Business hours
                 </p>
               </div>
               <div className="grid md:grid-cols-3 gap-8">

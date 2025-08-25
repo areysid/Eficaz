@@ -14,27 +14,30 @@ import {
   ArrowRight,
   Star,
   Menu,
+  Wallet,
+  BarChart,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const AIRecruiter = () => {
   // Animated counter for benefits section
   const [count, setCount] = useState(0);
-  useEffect(() => {
-    let start = 0;
-    const end = 75;
-    const duration = 1500;
-    const stepTime = Math.abs(Math.floor(duration / end));
-    const timer = setInterval(() => {
-      start += 1;
-      setCount(start);
-      if (start === end) clearInterval(timer);
-    }, stepTime);
-    return () => clearInterval(timer);
-  }, []);
+  const [hasRun, setHasRun] = useState(false);
+  // useEffect(() => {
+  //   let start = 0;
+  //   const end = 75;
+  //   const duration = 1500;
+  //   const stepTime = Math.abs(Math.floor(duration / end));
+  //   const timer = setInterval(() => {
+  //     start += 1;
+  //     setCount(start);
+  //     if (start === end) clearInterval(timer);
+  //   }, stepTime);
+  //   return () => clearInterval(timer);
+  // }, []);
 
   // Track scroll for translucent header effect
   const [scrolled, setScrolled] = useState(false);
@@ -174,19 +177,21 @@ const AIRecruiter = () => {
           <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
             {[
               {
-                icon: <Zap className="h-6 w-6 text-primary" />,
+                icon: <Zap className="h-6 w-6 text-accent" />,
                 title: "AI-Powered Screening",
-                desc: "Intelligent algorithms analyze resumes and match candidates based on skills, experience, and cultural fit.",
+                desc: "Voice AI leads candidate conversations while smart screening ensures the perfect fit.",
               },
               {
-                icon: <Shield className="h-6 w-6 text-accent" />,
-                title: "Data Security",
-                desc: "Enterprise-grade security ensures your candidate data and company information remain protected.",
+                icon: <Wallet className="h-6 w-6 text-accent" />,
+                title: "Cost Saving",
+                desc: "Reduce hiring costs by up to 80% with AI-powered automation.",
+
               },
               {
-                icon: <Users className="h-6 w-6 text-primary" />,
-                title: "Team Collaboration",
-                desc: "Seamless tools for hiring teams to review, discuss, and make decisions together.",
+                icon: <BarChart className="h-6 w-6 text-accent" />,
+                title: "Advanced Analytics",
+                desc: "Gain deep insights into candidates and market trends with AI-driven analytics.",
+
               },
             ].map((f, i) => (
               <motion.div
@@ -237,6 +242,7 @@ const AIRecruiter = () => {
                 "Intelligent candidate matching",
                 "Real-time collaboration",
                 "Analytics and reporting",
+                "Efficient tapping of join-ready talent",
               ].map((b, i) => (
                 <li key={i} className="flex items-center">
                   <CheckCircle className="h-5 w-5 text-primary mr-3" />
@@ -245,12 +251,27 @@ const AIRecruiter = () => {
               ))}
             </ul>
           </motion.div>
+
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
             className="relative"
+            onViewportEnter={() => {
+              if (hasRun) return; // ✅ Prevent rerun
+              setHasRun(true);
+
+              let start = 0;
+              const end = 75;
+              const duration = 1500;
+              const stepTime = Math.abs(Math.floor(duration / end));
+              const timer = setInterval(() => {
+                start += 1;
+                setCount(start);
+                if (start === end) clearInterval(timer);
+              }, stepTime);
+            }}
           >
             <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 p-8 flex items-center justify-center shadow-lg">
               <div className="text-center">
@@ -259,6 +280,8 @@ const AIRecruiter = () => {
               </div>
             </div>
           </motion.div>
+
+     
         </div>
       </section>
 
