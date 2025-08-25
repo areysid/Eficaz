@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AIRecruiter from "./pages/AIRecruiter";
 import Pricing from "./pages/Pricing";
 import MainLayout from "./components/MainLayout";
+import ScrollToTop from "./components/scrolltotop";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +17,7 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
+        <ScrollToTop />
           {/* <MainLayout> */}
             <Routes>
               {/* Root shows AI Recruiter */}
