@@ -16,7 +16,7 @@ const PricingPlans = () => {
       features: [
         "Direct Calls will be done",
         "Voice screening + CV screening",
-        "6 minutes call limit, TAT - 6 Business hours (3 hours sourcing)",
+        "6 minutes call limit",
       ],
     },
     {
@@ -55,7 +55,7 @@ const PricingPlans = () => {
       features: [
         "Direct Calls will be done",
         "Voice screening + CV screening",
-        "6 minutes call limit, TAT - 6 Business hours (3 hours sourcing)",
+        "6 minutes call limit",
       ],
     },
     {
