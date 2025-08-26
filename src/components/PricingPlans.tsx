@@ -38,7 +38,7 @@ const PricingPlans = () => {
       price: "262.5",
       description: "Best of Both Worlds",
       features: [
-        "Indirect calls precede direct calls for effective engagement",
+        "Form and messsage based communication precede direct calls",
         "Voice screening + CV screening",
         "3-6 minutess call limit",
       ],
@@ -77,7 +77,7 @@ const PricingPlans = () => {
       price: "187.5",
       description: "Best of Both Worlds",
       features: [
-        "Indirect calls precede direct calls for effective engagement",
+        "Form and messsage based communication precede direct calls",
         "Voice screening + CV screening",
         "3-6 minutes call limit",
       ],
@@ -239,7 +239,7 @@ const PricingPlans = () => {
             {/* Without Data Plans */}
             <div>
               <div className="text-center mb-10">
-                <h2 className="text-3xl font-bold mb-2">Sourcing with Your Data</h2>
+                <h2 className="text-3xl font-bold mb-2">Screening with Your Data</h2>
                 <p className="text-muted-foreground">
                   Efficient screening with your own sourced candidates
                 </p>
