@@ -1,107 +1,61 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Search } from "lucide-react";
+"use client";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import logo from "/Logo.png";
 
 const MainNavigation = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
+  const [scrolled, setScrolled] = useState(false);
 
-  const navigation = [
-    { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Courses", href: "/courses" },
-    { name: "Diversity", href: "/diversity" },
-    { name: "Career", href: "/career" },
-    { name: "AI Recruiter", href: "/ai-recruiter" },
-    { name: "Candidate Registration", href: "/candidate-registration" },
-  ];
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
 
-  const isActive = (href: string) => {
-    if (href === "/" && location.pathname === "/") return true;
-    if (href !== "/" && location.pathname.startsWith(href)) return true;
-    return false;
-  };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      {/* Top bar */}
-      <div className="bg-primary text-primary-foreground">
-        <div className="container flex h-8 items-center justify-between text-sm">
-          <div className="flex items-center space-x-4">
-            <span>Contact us: info@eficaz.biz</span>
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/70 backdrop-blur-md shadow-md"
+          : "bg-white/30 backdrop-blur-lg"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-3">
+        {/* Logo */}
+        <Link to="/">
+          <div className="flex items-center gap-2 cursor-pointer">
+            <img
+              src={logo} // logo imported at top
+              alt="Eficaz Logo"
+              className="w-auto h-10"
+            />
+            {/* <span className="font-semibold text-lg text-gray-800">
+              Eficaz
+            </span> */}
           </div>
-          <div className="flex items-center space-x-4">
-            <Link to="/login" className="hover:underline">Login</Link>
-            <Link to="/register" className="hover:underline">Register</Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Main navigation */}
-      <div className="container flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2">
-          <img 
-            src="/lovable-uploads/8b1d9995-e628-4d9d-bd6e-ccc312b188ca.png" 
-            alt="EFICAZ Logo" 
-            className="h-10 w-auto"
-          />
         </Link>
 
-        {/* Desktop navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              to={item.href}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                isActive(item.href) 
-                  ? "text-primary" 
-                  : "text-muted-foreground"
-              }`}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex items-center gap-8 font-medium text-gray-700">
+          <li><Link to="/" className="hover:text-green-600 transition">Home</Link></li>
+          <li><Link to="/about-us" className="hover:text-green-600 transition">About</Link></li>
+          <li><Link to="/services" className="hover:text-green-600 transition">Services</Link></li>
+          <li><Link to="/courses" className="hover:text-green-600 transition">Courses</Link></li>
+          <li><Link to="/diversity" className="hover:text-green-600 transition">Diversity</Link></li>
+          <li><Link to="/ai-recruiter" className="hover:text-green-600 transition">AI Recruiter</Link></li>
+        </ul>
 
-        {/* Desktop search */}
-        <div className="hidden md:flex items-center space-x-2">
-          <Button variant="ghost" size="icon">
-            <Search className="h-4 w-4" />
-          </Button>
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
+          <button className="p-2 rounded-md bg-green-600 text-white">
+            ☰
+          </button>
         </div>
-
-        {/* Mobile navigation */}
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
-              <Menu className="h-5 w-5" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-72">
-            <div className="flex flex-col space-y-4 mt-6">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${
-                    isActive(item.href) 
-                      ? "text-primary" 
-                      : "text-muted-foreground"
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          </SheetContent>
-        </Sheet>
       </div>
-    </header>
+    </nav>
   );
 };
 

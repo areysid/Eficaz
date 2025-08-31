@@ -9,45 +9,23 @@ import { Badge } from "@/components/ui/badge";
 import {
   CheckCircle,
   Zap,
-  Shield,
-  Users,
-  ArrowRight,
   Star,
   Menu,
   Wallet,
   BarChart,
+  ArrowRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import MainNavigation from "@/components/MainNavigation"; // ✅ Import your shared Navbar
+import Footer from "./Footer";
 
 const AIRecruiter = () => {
-  // Animated counter for benefits section
   const [count, setCount] = useState(0);
   const [hasRun, setHasRun] = useState(false);
-  // useEffect(() => {
-  //   let start = 0;
-  //   const end = 75;
-  //   const duration = 1500;
-  //   const stepTime = Math.abs(Math.floor(duration / end));
-  //   const timer = setInterval(() => {
-  //     start += 1;
-  //     setCount(start);
-  //     if (start === end) clearInterval(timer);
-  //   }, stepTime);
-  //   return () => clearInterval(timer);
-  // }, []);
 
-  // Track scroll for translucent header effect
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Parallax effect for background
+  // Track scroll for background shapes
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 100]);
   const y2 = useTransform(scrollY, [0, 500], [0, -100]);
@@ -65,67 +43,22 @@ const AIRecruiter = () => {
       />
 
       {/* Top Banner */}
-      <div className=" top-0 left-0 w-full bg-accent/10 py-2 z-50">
+      <div className="top-0 left-0 w-full bg-accent/10 py-2 z-40 mt-16">
         <div className="container text-center">
-          {/* <motion.p
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-sm text-muted-foreground"
-          > */}
-            <span className="font-medium text-accent">AI Recruiter</span> – Powered by EFICAZ
-          {/* </motion.p> */}
+          <span className="font-medium text-accent">
+            AI Recruiter
+          </span>{" "}
+          – Powered by EFICAZ
         </div>
       </div>
 
-      {/* Header */}
-      <header
-        className={`fixed left-0 w-full z-40 border-b transition-all duration-300 ${
-          scrolled
-            ? "top-0 bg-background/70 backdrop-blur-md shadow-sm h-14"
-            : "top-8 bg-background/90 h-16"
-        }`}
-      >
-        <div className="container flex h-full items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2">
-            <img
-              src="/Logo.png"
-              alt="EFICAZ Logo"
-              className="h-8 w-auto"
-            />
-            <span className="text-sm font-medium text-muted-foreground">
-              | AI Recruiter
-            </span>
-          </Link>
-          <nav className="hidden md:flex items-center space-x-6">
-            <Button
-              asChild
-              variant="outline"
-              size="sm"
-              className="transition hover:scale-105"
-            >
-              <Link to="/pricing">Pricing</Link>
-            </Button>
-          </nav>
-          <Sheet >
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <div className="flex flex-col space-y-4 mt-6">
-                <Button asChild variant="outline" className="justify-start">
-                  <Link to="/pricing">Pricing</Link>
-                </Button>
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
-      </header>
+      {/* ✅ Use shared MainNavigation */}
+      <MainNavigation />
+
+      
 
       {/* Hero */}
-      <section className="relative overflow-hidden py-24 sm:py-36 pt-40">
+      <section className="relative overflow-hidden py-24 sm:py-36 pt-32">
         <div className="container relative z-10">
           <motion.div
             className="mx-auto max-w-4xl text-center"
@@ -147,7 +80,7 @@ const AIRecruiter = () => {
               matching. Find the perfect talent faster than ever before.
             </p>
             <div className="mt-10 flex justify-center">
-              <Link to="/pricing">
+              <Link to="/ai-recruiter/pricing">
                 <Button
                   size="lg"
                   className="h-12 px-8 transition-transform hover:scale-110 hover:shadow-xl"
@@ -185,13 +118,11 @@ const AIRecruiter = () => {
                 icon: <Wallet className="h-6 w-6 text-accent" />,
                 title: "Cost Saving",
                 desc: "Reduce hiring costs by up to 80% with AI-powered automation.",
-
               },
               {
                 icon: <BarChart className="h-6 w-6 text-accent" />,
                 title: "Advanced Analytics",
                 desc: "Gain deep insights into candidates and market trends with AI-driven analytics.",
-
               },
             ].map((f, i) => (
               <motion.div
@@ -259,7 +190,7 @@ const AIRecruiter = () => {
             viewport={{ once: true }}
             className="relative"
             onViewportEnter={() => {
-              if (hasRun) return; // ✅ Prevent rerun
+              if (hasRun) return;
               setHasRun(true);
 
               let start = 0;
@@ -280,8 +211,6 @@ const AIRecruiter = () => {
               </div>
             </div>
           </motion.div>
-
-     
         </div>
       </section>
 
@@ -299,7 +228,7 @@ const AIRecruiter = () => {
             Join companies already using EFICAZ to find top talent faster.
           </p>
           <div className="mt-8">
-            <Link to="/pricing">
+            <Link to="/ai-recruiter/pricing">
               <Button
                 size="lg"
                 variant="secondary"
@@ -314,29 +243,7 @@ const AIRecruiter = () => {
       </motion.section>
 
       {/* Footer */}
-      <footer className="border-t py-12 relative z-10">
-        <div className="container text-center space-y-4">
-          <img
-            src="/Logo.png"
-            alt="EFICAZ Logo"
-            className="h-8 w-auto mx-auto"
-          />
-          <p className="text-sm text-muted-foreground">
-            © 2024 EFICAZ. AI-powered recruitment platform transforming the way companies hire talent.
-          </p>
-          <div className="flex justify-center gap-6 text-sm text-muted-foreground">
-            <Link to="/pricing" className="hover:text-primary transition">
-              Pricing
-            </Link>
-            <a
-              href="mailto:contact@eficaz.ai"
-              className="hover:text-primary transition"
-            >
-              Contact
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 const PricingPlans = () => {
   const withDataPlans = [
@@ -271,29 +272,7 @@ const PricingPlans = () => {
       </main>
 
       {/* Footer */}
-      <footer className="border-t py-12 relative z-10">
-        <div className="container text-center space-y-4">
-          <img
-            src="/Logo.png"
-            alt="EFICAZ Logo"
-            className="h-8 w-auto mx-auto"
-          />
-          <p className="text-sm text-muted-foreground">
-            © 2024 EFICAZ. AI-powered recruitment platform transforming the way companies hire talent.
-          </p>
-          <div className="flex justify-center gap-6 text-sm text-muted-foreground">
-            <Link to="/" className="hover:text-primary transition">
-              Home
-            </Link>
-            <a
-              href="mailto:contact@eficaz.ai"
-              className="hover:text-primary transition"
-            >
-              Contact
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

@@ -7,6 +7,11 @@ import AIRecruiter from "./pages/AIRecruiter";
 import Pricing from "./pages/Pricing";
 import MainLayout from "./components/MainLayout";
 import ScrollToTop from "./components/scrolltotop";
+import Home from "./pages/Home";
+import AboutUs from "./pages/aboutus";
+import Services from "./pages/Services";
+import CoursesPage from "./pages/courses";
+import Diversity from "./pages/Diversity";
 
 const queryClient = new QueryClient();
 
@@ -21,10 +26,15 @@ const App = () => {
           {/* <MainLayout> */}
             <Routes>
               {/* Root shows AI Recruiter */}
-              <Route path="/" element={<AIRecruiter />} />
+              <Route path="/" element={<Home />} />
 
               {/* Pricing page */}
-              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/ai-recruiter/pricing" element={<Pricing />} />
+              <Route path="/ai-recruiter" element={<AIRecruiter />} />
+              <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/courses" element={<CoursesPage />} />
+              <Route path="/diversity" element={<Diversity />} />
 
               {/* Fallback: redirect unknown routes to root */}
               <Route path="*" element={<Navigate to="/" />} />
