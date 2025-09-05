@@ -177,11 +177,11 @@ const AboutUs: React.FC = () => {
       </section>
 
       {/* Divider */}
-      <div className="w-full h-16 bg-gradient-to-b from-white to-emerald-50 skew-y-2"></div>
+      {/* <div className="w-full h-16 bg-gradient-to-b from-white to-emerald-50 skew-y-2"></div> */}
 
       {/* <section className="py-20 px-6 bg-gradient-to-r from-emerald-50 to-lime-50"> */}
         {/* Partners Section */}
-              <motion.section
+              {/* <motion.section
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
@@ -202,7 +202,7 @@ const AboutUs: React.FC = () => {
                     ))}
                   </div>
                 </div>
-              </motion.section>
+              </motion.section> */}
 
       {/* Divider */}
       <div className="w-full h-16 bg-gradient-to-b from-emerald-50 to-white -skew-y-2"></div>

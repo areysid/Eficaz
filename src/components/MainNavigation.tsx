@@ -43,7 +43,7 @@ const MainNavigation = () => {
           <li><Link to="/" className="hover:text-green-600 transition">Home</Link></li>
           <li><Link to="/about-us" className="hover:text-green-600 transition">About</Link></li>
           <li><Link to="/services" className="hover:text-green-600 transition">Services</Link></li>
-          <li><Link to="/courses" className="hover:text-green-600 transition">Courses</Link></li>
+          <li><Link to="/courses" className="hover:text-green-600 transition">Learning</Link></li>
           <li><Link to="/diversity" className="hover:text-green-600 transition">Diversity</Link></li>
           <li><Link to="/ai-recruiter" className="hover:text-green-600 transition">AI Recruiter</Link></li>
         </ul>

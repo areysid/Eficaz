@@ -12,6 +12,7 @@ import AboutUs from "./pages/aboutus";
 import Services from "./pages/Services";
 import CoursesPage from "./pages/courses";
 import Diversity from "./pages/Diversity";
+import Blog1 from "./pages/Blog1";
 
 const queryClient = new QueryClient();
 
@@ -35,7 +36,8 @@ const App = () => {
               <Route path="/services" element={<Services />} />
               <Route path="/courses" element={<CoursesPage />} />
               <Route path="/diversity" element={<Diversity />} />
-
+              <Route path="/diversity/blog1" element={<Blog1 />} />
+              
               {/* Fallback: redirect unknown routes to root */}
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>

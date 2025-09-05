@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useRef, useState } from "react";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { Target, Users, Briefcase, Lightbulb, Globe } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
@@ -27,19 +27,19 @@ const Diversity = () => {
       title: "How Diversity Drives Innovation",
       desc: "Exploring how diverse teams bring fresh ideas and perspectives to organizations.",
       img: "/blogs/blog1.jpg",
-      link: "https://medium.com/",
+      link: "/diversity/blog1",
     },
     {
       title: "Breaking Myths About Inclusive Hiring",
       desc: "Challenging common misconceptions around DEI in the workplace.",
       img: "/blogs/blog2.png",
-      link: "https://medium.com/",
+      link: "/diversity/blog1",
     },
     {
       title: "Building Sustainable DEI Strategies",
       desc: "A roadmap to long-term and impactful diversity initiatives.",
       img: "/blogs/blog3.jpg",
-      link: "https://medium.com/",
+      link: "/diversity/blog1",
     },
   ];
 
@@ -53,7 +53,7 @@ const Diversity = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   };
 
-  const advantages = [
+  const advantages1 = [
     {
       icon: <Users className="w-8 h-8 text-white" />,
       title: "Creativity",
@@ -81,6 +81,18 @@ const Diversity = () => {
     },
   ];
 
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: false }); // `once: false` ensures it triggers every time
+
+  const advantages = [
+  { icon: <Users className="w-10 h-10" />, title: "Creativity", text: "Diverse perspectives fuel fresh ideas and innovation." },
+  { icon: <Target className="w-10 h-10" />, title: "Engagement", text: "Boosts team morale and collaboration." },
+  { icon: <Briefcase className="w-10 h-10" />, title: "Performance", text: "Leads to better decisions and stronger results." },
+  { icon: <Users className="w-10 h-10" />, title: "Collaboration", text: "Fosters teamwork and knowledge sharing." },
+  { icon: <Lightbulb className="w-10 h-10" />, title: "Adaptability", text: "Teams respond faster to change and challenges." },
+  { icon: <Globe className="w-10 h-10" />, title: "Global Reach", text: "Reflects customers and markets worldwide." },
+  ];
+
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
       <MainNavigation />
@@ -103,11 +115,11 @@ const Diversity = () => {
           <div className="lg:w-1/2 space-y-6 text-left">
             <h2 className="text-3xl font-bold text-green-700">Empowering Through Asha Jobs</h2>
             <p className="text-gray-700">
-              “AshaJobs” is an EFICAZ initiative that represents the empowerment of workforce diversity. 
-              Through this initiative, our primary focus is to educate and encourage Diversity & Inclusion 
-              (D&I) hiring across various industries, aiming to create an environment where equal 
-              opportunities are plentiful for people in all kinds of Diversity groups like Specially abled, 
-              Women workforce and LGBTQ+. We take immense pride in driving our experience to introduce our 
+              “AshaJobs” is an EFICAZ initiative that represents the empowerment of workforce diversity.
+              Through this initiative, our primary focus is to educate and encourage Diversity & Inclusion
+              (D&I) hiring across various industries, aiming to create an environment where equal
+              opportunities are plentiful for people in all kinds of Diversity groups like Specially abled,
+              Women workforce and LGBTQ+. We take immense pride in driving our experience to introduce our
               society with unprecedented diversity in employment for our partners.
             </p>
             <div className="flex gap-6">
@@ -129,6 +141,7 @@ const Diversity = () => {
       </motion.section>
 
       {/* Section 2: Advantages of DEI Talent */}
+
       <motion.section
         className="bg-white py-16"
         initial="hidden"
@@ -137,11 +150,15 @@ const Diversity = () => {
         variants={fadeIn}
       >
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-16 text-green-700">Advantages of Hiring DEI Talent</h2>
+          <h2 className="text-3xl font-bold mb-16 text-green-700">
+            Advantages of Hiring DEI Talent
+          </h2>
+
           <div className="relative flex justify-between items-start max-w-5xl mx-auto">
+            
             <div className="absolute top-7 left-0 right-0 h-1 bg-green-200"></div>
 
-            {advantages.map((adv, idx) => (
+            {advantages1.map((adv, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
@@ -149,9 +166,15 @@ const Diversity = () => {
                 transition={{ duration: 0.6, delay: idx * 0.2 }}
                 className="relative w-40 flex flex-col items-center"
               >
-                <div className="z-10 flex items-center justify-center w-14 h-14 bg-green-600 rounded-full shadow-md mb-4">
+                
+                <motion.div
+                  whileHover={{ scale: 1.2, y: -6 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="z-10 flex items-center justify-center w-14 h-14 bg-green-600 rounded-full mb-4"
+                >
                   {adv.icon}
-                </div>
+                </motion.div>
+
                 <h3 className="text-green-700 font-semibold">{adv.title}</h3>
                 <p className="text-gray-600 text-sm mt-2">{adv.text}</p>
               </motion.div>
@@ -160,9 +183,58 @@ const Diversity = () => {
         </div>
       </motion.section>
 
+      {/* Section 2: Advantages of DEI Talent (Radial Layout) */}
+      <motion.section
+  ref={sectionRef}
+  className="bg-white relative flex items-center justify-center min-h-screen overflow-visible"
+>
+  {/* Center Circle */}
+  <motion.div
+    initial={{ scale: 0 }}
+     animate={isInView ? { scale: 1 } : { scale: 0 }} // scale down when leaving view
+    transition={{ type: "spring", stiffness: 120, damping: 10 }}
+    className="absolute w-60 h-60 rounded-full bg-green-600 text-white flex items-center justify-center text-center font-bold shadow-lg z-10 p-6"
+  >
+    Advantages of <br /> Hiring DEI Talent
+  </motion.div>
+
+  {/* Orbiting Advantage Circles */}
+  {advantages.map((adv, i) => {
+    const radius = 220; // distance from center
+    const angle = (i / advantages.length) * 2 * Math.PI;
+    const x = Math.cos(angle) * radius;
+    const y = Math.sin(angle) * radius;
+
+    return (
+      <motion.div
+  key={i}
+  initial={{ x: 0, y: 0, opacity: 0 }}
+  animate={isInView ? { x, y, opacity: 1 } : {}}
+  whileHover={{  backgroundColor: "#16a34a" }}
+  transition={{ type: "tween", duration: 0.75 }}
+  className="absolute w-44 h-44 rounded-full bg-white border-2 border-green-600 flex flex-col items-center justify-center text-center p-4 cursor-pointer"
+>
+  <motion.div
+    className="mb-2 text-green-600 flex flex-col items-center"
+    whileHover={{ color: "white" }}
+  >
+    {adv.icon}
+    <h3 className="font-semibold text-sm mt-2">{adv.title}</h3>
+    <p className="text-gray-600 text-xs mt-1 hover:text-white">{adv.text}</p>
+  </motion.div>
+</motion.div>
+
+    );
+  })}
+</motion.section>
+
+
+
+
+
       {/* Section 3: Fact vs Fiction */}
       <motion.section
-        className="container mx-auto px-6 py-16"
+        className="container mx-auto px-6 pt-44 pb-8"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
