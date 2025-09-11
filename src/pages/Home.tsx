@@ -129,7 +129,7 @@ const Home = () => {
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Eficaz established in 2013, began its journey with humble
-                origins. In the past 10 years, the company has played a
+                origins. In the past 12 years, the company has played a
                 significant role in assisting over 100 multinational
                 corporations in India to discover exceptional talent.
               </p>
