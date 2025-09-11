@@ -23,10 +23,10 @@ import Footer from "@/components/Footer";
 import ReviewsSection from "@/components/ReviewsSection";
 
 const carouselImages = [
-  "/test/test1.jpg",
-  "/test/test2.jpg",
-  "/test/test3.jpeg",
-  "/test/test4.jpeg",
+  "/Banner/Banner1.jpg",
+  "/Banner/Banner2.jpeg",
+  "/Banner/Banner3.jpeg",
+  "/Banner/Banner4.jpeg",
 ];
 
 const partnerLogos = [
@@ -188,7 +188,7 @@ const Home = () => {
       </motion.section>
 
       {/* Hero Carousel */}
-      <section className="relative w-full h-[70vh] overflow-hidden bg-black flex items-center">
+      <section className="relative w-full h-[50vh] overflow-hidden bg-black flex items-center">
         <div
           className="flex transition-transform duration-1000 h-full"
           style={{

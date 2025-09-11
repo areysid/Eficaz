@@ -142,7 +142,7 @@ const Diversity = () => {
 
       {/* Section 2: Advantages of DEI Talent */}
 
-      <motion.section
+      {/* <motion.section
         className="bg-white py-16"
         initial="hidden"
         whileInView="visible"
@@ -181,7 +181,7 @@ const Diversity = () => {
             ))}
           </div>
         </div>
-      </motion.section>
+      </motion.section> */}
 
       {/* Section 2: Advantages of DEI Talent (Radial Layout) */}
       <motion.section
