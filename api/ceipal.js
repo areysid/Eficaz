@@ -1,4 +1,3 @@
-// api/ceipal.js
 import axios from "axios";
 
 // --- Get access token ---
@@ -7,9 +6,9 @@ export async function getCeipalToken() {
     const authResponse = await axios.post(
       "https://api.ceipal.com/v1/createAuthtoken",
       {
-        email: "neha@eficazindia.com",
-        password: "Neha@05260",
-        api_key: "5d12740ec96394c3757de779e900dfe09cf6c9a5697a79cda0af3381ee1a0784",
+        email: process.env.CEIPAL_EMAIL,
+        password: process.env.CEIPAL_PASSWORD,
+        api_key: process.env.CEIPAL_API_KEY,
       },
       {
         headers: {

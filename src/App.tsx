@@ -13,7 +13,7 @@ import Services from "./pages/Services";
 import CoursesPage from "./pages/courses";
 import Diversity from "./pages/Diversity";
 import Blog1 from "./pages/Blog1";
-import JobList from "@/components/JobList";
+import JobList from "@/components/joblist";
 
 const queryClient = new QueryClient();
 
