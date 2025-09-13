@@ -39,6 +39,7 @@ const Footer = () => {
         <Link to="/about-us" className="hover:text-gray-300">About Us</Link>
         <Link to="/services" className="hover:text-gray-300">Services</Link>
         <Link to="/courses" className="hover:text-gray-300">Learning</Link>
+        <Link to="/career" className="hover:text-green-600 transition">Career</Link>
         <Link to="/diversity" className="hover:text-gray-300">Diversity</Link>
         <Link to="/ai-recruiter" className="hover:text-gray-300">AI Recruiter</Link>
         {/* <Link to="/terms-conditions" className="hover:text-gray-300">Terms & Conditions</Link> */}

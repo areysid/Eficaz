@@ -111,3 +111,12 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes loadingBar {
+  0% { left: -33%; }
+  100% { left: 100%; }
+}
+
+.animate-loadingBar {
+  animation: loadingBar 1s linear infinite;
+}
