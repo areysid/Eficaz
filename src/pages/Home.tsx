@@ -22,8 +22,11 @@ import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 import ReviewsSection from "@/components/ReviewsSection";
 
+import Calendar1 from "@/components/Calender";
+
 
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import WebinarTimeline from "@/components/Calender";
 
 
 const carouselImages = [
@@ -321,9 +324,6 @@ const Home = () => {
 
           {/* Left Content */}
           <div className="space-y-6">
-            <Badge variant="secondary" className="w-fit">
-              Upcoming Webinar
-            </Badge>
 
             <h2 className="text-3xl font-bold">
               Making Your Learning More Enjoyable
@@ -344,21 +344,10 @@ const Home = () => {
           </div>
 
           {/* Right Content */}
-          <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl p-8 text-center space-y-6">
-            <img
-              src="/webinar.svg"
-              alt="Webinar Illustration"
-              className="mx-auto w-1/3 h-1/3"
-            />
-
-            <h3 className="text-xl font-bold mb-2">Next Session</h3>
-            <p className="text-muted-foreground">Coming Soon</p>
-
-            <div className="mt-4 text-lg font-medium text-primary">
-              Stay tuned for date announcement!
-            </div>
+          <div className="flex justify-center">
+          <WebinarTimeline />
           </div>
-
+          
         </div>
       </motion.section>
 
@@ -491,7 +480,7 @@ const Home = () => {
               {/* Right Image */}
               <div className="w-1/3 flex items-center">
                 <img
-                  src="course.png"
+                  src="courses/RecruitmentDashboardsusingLookerStudio(GoogleDataStudio).png"
                   alt="Course Thumbnail"
                   className="rounded-r-lg object-cover h-full w-full"
                 />
