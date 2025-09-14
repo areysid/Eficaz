@@ -2,8 +2,12 @@ import { google } from "googleapis";
 
 export default async function handler(req, res) {
   try {
+    // Parse the service account JSON and fix the private_key newlines
+    const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
+    serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, "\n");
+
     const auth = new google.auth.GoogleAuth({
-      credentials: JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT),
+      credentials: serviceAccount,
       scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
     });
 
