@@ -6,6 +6,7 @@ export default async function handler(req, res) {
       throw new Error("Missing GOOGLE_SERVICE_ACCOUNT environment variable");
     }
 
+    // Parse service account JSON from environment variable
     const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
 
     const auth = new google.auth.GoogleAuth({
@@ -29,7 +30,8 @@ export default async function handler(req, res) {
 
     const headers = rows[0];
     const data = rows.slice(1).map((row) => {
-      const obj: Record<string, string> = {};
+      const obj = {}; // <-- removed TypeScript type annotation
+
       headers.forEach((header, i) => {
         obj[header] = row[i] || "";
       });
@@ -52,6 +54,6 @@ export default async function handler(req, res) {
     return res.status(200).json(data);
   } catch (err) {
     console.error(err);
-    return res.status(500).json({ error: err?.message || String(err) });
+    return res.status(500).json({ error: err.message || String(err) });
   }
 }
