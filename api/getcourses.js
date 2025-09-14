@@ -2,9 +2,11 @@ import { google } from "googleapis";
 
 export default async function handler(req, res) {
   try {
-    // Parse the service account JSON and fix the private_key newlines
+    if (!process.env.GOOGLE_SERVICE_ACCOUNT) {
+      throw new Error("Missing GOOGLE_SERVICE_ACCOUNT environment variable");
+    }
+
     const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
-    serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, "\n");
 
     const auth = new google.auth.GoogleAuth({
       credentials: serviceAccount,
@@ -27,7 +29,7 @@ export default async function handler(req, res) {
 
     const headers = rows[0];
     const data = rows.slice(1).map((row) => {
-      const obj = {};
+      const obj: Record<string, string> = {};
       headers.forEach((header, i) => {
         obj[header] = row[i] || "";
       });
