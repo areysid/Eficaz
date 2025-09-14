@@ -3,8 +3,7 @@ import { google } from "googleapis";
 export default async function handler(req, res) {
   try {
     const auth = new google.auth.GoogleAuth({
-      // keyFile: "api/eficaz-service.json",
-      credentials: JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT), // ✅ use env variable
+      credentials: JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT),
       scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
     });
 
