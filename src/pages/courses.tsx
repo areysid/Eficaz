@@ -194,6 +194,10 @@ const Courses: React.FC = () => {
                   src={course.Image || "/courses/placeholder.jpg"}
                   alt={course.Title}
                   className="w-12 h-12 object-cover rounded-md mr-3"
+                  onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src =
+                        "/courses/placeholder.jpg";
+                    }}
                 />
                 <div>
                   <p className="text-sm font-medium">{course.Title}</p>
