@@ -6,8 +6,10 @@ export default async function handler(req, res) {
       throw new Error("Missing GOOGLE_SERVICE_ACCOUNT environment variable");
     }
 
-    // Parse service account JSON from environment variable
-    const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
+    let serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
+
+    // Fix private key newlines
+    serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, '\n');
 
     const auth = new google.auth.GoogleAuth({
       credentials: serviceAccount,
@@ -30,20 +32,18 @@ export default async function handler(req, res) {
 
     const headers = rows[0];
     const data = rows.slice(1).map((row) => {
-      const obj = {}; // <-- removed TypeScript type annotation
+      const obj = {};
 
       headers.forEach((header, i) => {
         obj[header] = row[i] || "";
       });
 
-      // Convert Google Drive links to direct links
       if (obj.Image) {
         const match = obj.Image.match(/\/d\/(.*?)\//);
         if (match && match[1]) {
           obj.Image = `https://drive.google.com/uc?export=view&id=${match[1]}`;
         }
       } else {
-        // If Image cell is blank, generate path from Title
         const fileName = obj.Title.replace(/\s/g, "") + ".png";
         obj.Image = `/courses/${fileName}`;
       }
@@ -56,4 +56,4 @@ export default async function handler(req, res) {
     console.error(err);
     return res.status(500).json({ error: err.message || String(err) });
   }
-}
+};
