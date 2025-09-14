@@ -182,7 +182,7 @@ const PricingPlans = () => {
     <div className="flex flex-col min-h-screen">
       {/* Main Content */}
       <main className="flex-grow">
-        <section className="py-20 px-4 bg-gradient-to-b from-background via-muted/30 to-background">
+       <section className="py-20 bg-gradient-to-b from-background via-muted/30 to-background">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <motion.h1
@@ -272,7 +272,6 @@ const PricingPlans = () => {
       </main>
 
       {/* Footer */}
-      <Footer />
     </div>
   );
 };

@@ -54,11 +54,10 @@ export default function ReviewsSection() {
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
-                    className={`h-5 w-5 ${
-                      i < Math.round(averageRating)
+                    className={`h-5 w-5 ${i < Math.round(averageRating)
                         ? "fill-yellow-400 text-yellow-400"
                         : "text-gray-300"
-                    }`}
+                      }`}
                   />
                 ))}
               </div>
@@ -92,16 +91,18 @@ export default function ReviewsSection() {
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
-                      className={`h-4 w-4 ${
-                        i < review.rating
+                      className={`h-4 w-4 ${i < review.rating
                           ? "fill-yellow-400 text-yellow-400"
                           : "text-gray-300"
-                      }`}
+                        }`}
                     />
                   ))}
                 </div>
 
-                <p className="text-sm text-muted-foreground">{review.text}</p>
+                <p className="text-sm text-muted-foreground">
+                  {review.text.split(". ").slice(0, 2).join(". ") + (review.text.includes(". ") ? "." : "")}
+                </p>
+
               </CardContent>
             </Card>
           ))}

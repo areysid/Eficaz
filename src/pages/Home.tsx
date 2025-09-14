@@ -22,6 +22,10 @@ import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 import ReviewsSection from "@/components/ReviewsSection";
 
+
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+
 const carouselImages = [
   "/Banner/Banner1.jpg",
   "/Banner/Banner2.jpeg",
@@ -73,6 +77,8 @@ const useCountUp = (target: number, duration = 2000, trigger: boolean) => {
 };
 
 const Home = () => {
+
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [startCount, setStartCount] = useState(false);
   const counterRef = useRef<HTMLDivElement | null>(null);
@@ -103,6 +109,29 @@ const Home = () => {
     observer.observe(counterRef.current);
     return () => observer.disconnect();
   }, []);
+
+  // partrners autoplay
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) =>
+        prev === partnerLogos.length - 1 ? 0 : prev + 1
+      );
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? partnerLogos.length - 1 : prev - 1
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) =>
+      prev === partnerLogos.length - 1 ? 0 : prev + 1
+    );
+  };
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
@@ -289,31 +318,51 @@ const Home = () => {
         className="py-20 bg-muted/30"
       >
         <div className="container grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+          {/* Left Content */}
           <div className="space-y-6">
             <Badge variant="secondary" className="w-fit">
               Upcoming Webinar
             </Badge>
+
             <h2 className="text-3xl font-bold">
               Making Your Learning More Enjoyable
             </h2>
+
             <p className="text-muted-foreground">
-              Join our upcoming webinar to learn about the latest trends in
-              recruitment and talent acquisition.
+              Join our upcoming webinar to learn about the latest trends in recruitment and talent acquisition.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild>
-                <Link to="/webinars">View All Webinars</Link>
-              </Button>
-              <Button variant="outline">Register Now</Button>
+
+            {/* Informative Infographic */}
+            <div className="space-y-4">
+              <h4 className="font-semibold text-lg">Did you know?</h4>
+              <ul className="list-disc list-inside text-muted-foreground space-y-2">
+                <li>75% of recruiters rely on digital webinars for industry insights.</li>
+                <li>Interactive webinars boost engagement by 50% compared to pre-recorded videos.</li>
+              </ul>
             </div>
           </div>
-          <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl p-8 text-center">
-            <Calendar className="h-16 w-16 mx-auto mb-4 text-primary" />
+
+          {/* Right Content */}
+          <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl p-8 text-center space-y-6">
+            <img
+              src="/webinar.svg"
+              alt="Webinar Illustration"
+              className="mx-auto w-1/3 h-1/3"
+            />
+
             <h3 className="text-xl font-bold mb-2">Next Session</h3>
             <p className="text-muted-foreground">Coming Soon</p>
+
+            <div className="mt-4 text-lg font-medium text-primary">
+              Stay tuned for date announcement!
+            </div>
           </div>
+
         </div>
       </motion.section>
+
+
 
       {/* Featured Course Section */}
       <motion.section
@@ -458,33 +507,53 @@ const Home = () => {
       <ReviewsSection />
 
       {/* Partners Section */}
-      <motion.section
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="py-20 bg-white"
-      >
-        <div className="container text-center space-y-10">
-          <h2 className="text-3xl font-bold">Our Clients</h2>
-          <div className="flex flex-wrap justify-center gap-8">
-            {partnerLogos.map((logo, idx) => (
-              <div key={idx} className="flex items-center justify-center">
-                <img
-                  src={logo}
-                  alt={`Partner ${idx + 1}`}
-                  className="h-24 w-auto object-contain"
-                />
-              </div>
-              /* Alternate Solution
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center"> {partnerLogos.map((logo, idx) => ( <div key={idx} className="flex items-center justify-center"> <img src={logo} alt={Partner ${idx + 1}} className="h-24 w-auto object-contain" /> </div> ))} </div>
-               */
-            ))}
-          </div>
+         <motion.section
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      className="py-20 bg-white"
+    >
+      <div className="container text-center space-y-10">
+        <h2 className="text-3xl font-bold">Our Clients</h2>
 
-
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-5 gap-8 items-center justify-center">
+          {partnerLogos.map((logo, idx) => (
+            <div key={idx} className="flex items-center justify-center">
+              <img
+                src={logo}
+                alt={`Partner ${idx + 1}`}
+                className="h-24 w-auto object-contain"
+              />
+            </div>
+          ))}
         </div>
-      </motion.section>
+
+        {/* Mobile Custom Carousel */}
+        <div className="md:hidden relative flex items-center justify-center">
+          <button
+            onClick={handlePrev}
+            className="absolute left-4 z-10 text-2xl text-green-600"
+          >
+            <FaChevronLeft />
+          </button>
+
+          <img
+            src={partnerLogos[currentIndex]}
+            alt={`Partner ${currentIndex + 1}`}
+            className="h-24 w-auto object-contain mx-auto"
+          />
+
+          <button
+            onClick={handleNext}
+            className="absolute right-4 z-10 text-2xl text-green-600"
+          >
+            <FaChevronRight />
+          </button>
+        </div>
+      </div>
+    </motion.section>
 
 
       {/* Footer */}

@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "eficaz-471218",
+  "private_key_id": "583181cd26c72cf6b7fb16c40df7c28fc6e70924",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDXwmWj5zV8noNt\nQodnXJmigazntXbw0wjdYd53VixmzSlrqsHULtCGicbpRDeX6vWuvCRSpfG+JfY6\n60lxVnySZnGHFGHmGTuWYpuz+66O0XW/dLFROrpGlxzq4fAxX5C6eFr8FQgw3yVO\nhlkbxpn77JPk395w0niHTxd65sbuRfPRnACsMzEoYcl6+13mT9g8zhPz7Bkqh4VZ\nL/tuW5F1UzQhiYVVT6FIlua9a28DJeP09f991VhfgrTRPvbEIsmdARavalMCme0i\njgakOJAyI4d47FoMnifvnRZWUEmicGVlgDqxTTKEMFe4XguToo51jVjtSgrjx7nG\nHDdhaT5xAgMBAAECggEABRfOpGbRyWZIfezDG3qBGefrt/B9pUOmAuvLf4+mLqsL\nHkKCnsqYG4TnEByPH2Ppdr10Mgs+wJlOzac+LZG4ERCf/2tIwFC6Klubh00amr5x\nBBryEJPNT9tDUHwS2meCGBS9ORQaBGVQESF0uwYeHmdAOnfaXVlqhO8mA72s1nT/\nKkeLsy6z+UV7bLdv6gTNdfcjGt5JQWZ8CdNej0tjWDLfN3ebI+Veli3INe7xkP4e\niZIEkN2jG4iBeoTpZVom6U8Dh1VI3lPXmYNd9msMDHSctqsogAsURNp0zN8ElCuM\nllx1wC+eofKYzq/kSr9TVSgpVgL+2qigZalhlf3VwQKBgQDwNEm7EYGcszht72EZ\nGP/TRzuuyoWQ1PSY1CdiH7fiEKPiNtUjItE57U2jPhpLkcYHthn4+zR2owA+IvAU\n0sFdC8p0Snvo5+HtUZefkdeIk0GkAZ5wxsechB1MQHg5mtogaJjVdCof6UwV6Yr8\naEVk1Ez7rKG/HAQVYXwWrW+TiQKBgQDl8pecsUxHg1FJ+K2GlpXF8v2dlwzSMOFK\nIYL9z2SH6V2A24J5HblmmprIGFyjs559edgyYdRZ2QlUQbAIyZMGY42KAtTlnii0\nTEB1q3Kot24GAVZSprbizivykvpoh/rBxp477VBHdxwQnOYX1YrSgbpoegZPzyGg\nX7Ke517RqQKBgG4mPC1ZoMsf8F+RZ0BgE2hqgPbtjgRVc3jlyM2ZZ/R11wE0TdbX\n74QVywVxxBMlXN9KZWyknXFN3B2iXd/eqacmcgeT5HBwbU0rnlEhSuopRO+VgneK\n4BxpBRpjcf5QgXhdHsC7jVmm3SorN335vuC27jp29pExorm/Q20OyVypAoGAMWmf\nANHspVVnq3CfwVMsnhvoOewSmjxcvTRUVLwzSy1vpVgGQoaLp6vDZQovJhJcFXSQ\na8sv+Zq08YEoFctTJ8VOzgBrxWfmMVBNbbvI6M55+xpgdWRT2osZUIga/UlzLh7D\nM/d8D89dnYhJvYdqzG+KIhdOsem9vRuzY4gujPkCgYB5MDJ1PNRGhTVxQTiaVgeG\n3dr+822MXMn37gEAYqhwHSB3LMMk3EkaMF1+zgt3r+fB8i4OyfNsFFLJ5eIT8pvt\n2hTkOgTDv9Cr52ZjtVXyfmOUkgjX0ZVy8sbT5RNdmrebhDFuoiZshgmMnIBp7wNB\nVnR1AkZDEK827CkU9ZJIyg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "sheets-api-access@eficaz-471218.iam.gserviceaccount.com",
+  "client_id": "112824185560327797968",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sheets-api-access%40eficaz-471218.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

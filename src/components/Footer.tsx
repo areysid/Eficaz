@@ -9,12 +9,20 @@ const Footer = () => {
         <div className="md:w-1/4 space-y-4">
           <img src="/LogoWhite.png" alt="EFICAZ Logo" className="h-10 w-auto" />
           <div className="flex gap-4 text-xl">
-            <a href="#" className="hover:text-gray-300"><FaFacebookF /></a>
-            <a href="#" className="hover:text-gray-300"><FaLinkedinIn /></a>
-            <a href="#" className="hover:text-gray-300"><FaWhatsapp /></a>
-            <a href="mailto:info@eficaz.biz" className="hover:text-gray-300"><FaEnvelope /></a>
+            <a href="https://www.facebook.com/eficazconsultant/" className="hover:text-gray-300"><FaFacebookF /></a>
+            <a href="https://www.linkedin.com/company/eficaz-hr/" className="hover:text-gray-300"><FaLinkedinIn /></a>
+            <a href="https://whatsapp.com/channel/0029Va8iGd54inovPnJTou3d" className="hover:text-gray-300"><FaWhatsapp /></a>
+            <a
+              href="mailto:info@eficazindia.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-300"
+              title="Send us an email"
+            >
+              <FaEnvelope />
+            </a>
           </div>
-          <p className="text-sm">info@eficaz.biz</p>
+          <p className="text-sm">Since 2013</p>
         </div>
 
         {/* Registered Office */}

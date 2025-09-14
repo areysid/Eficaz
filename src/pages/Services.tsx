@@ -160,9 +160,9 @@ const Services = () => {
                 </motion.div>
                 <CardTitle>Expertise</CardTitle>
                 <CardDescription className="mt-2 text-left">
-                  We follow a customizable recruitment process tailored absolutely as per your need. 
-                  It starts with a discovery workshop where we learn about your current processes 
-                  followed by the Implementation phase where the best RPO practises are put to effect 
+                  We follow a customizable recruitment process tailored absolutely as per your need.
+                  It starts with a discovery workshop where we learn about your current processes
+                  followed by the Implementation phase where the best RPO practises are put to effect
                   to achieve desired KRA’s, KPI’s & TATs.
                   <br></br>
                   Over <span className="text-2xl font-bold"> {count}+ </span> RPOs successfully managed. Trained on ATS like Taleo, Workday, iCIMS, Darwinbox, Successfactors, and Zwayam.
@@ -297,83 +297,89 @@ const Services = () => {
       </section> */}
 
       <section
-  id="analytics"
-  className="py-20 sm:py-32 bg-green-50 relative z-10"
->
-  <div className="container">
-    {/* Heading */}
-    <div className="mx-auto max-w-2xl text-center">
-      <Badge variant="secondary" className="mb-4">
-        <BarChart className="mr-1 h-3 w-3" /> Data-Driven Insights
-      </Badge>
-      <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-green-700">
-        HR Analytics & Dashboards
-      </h2>
-      <p className="mt-4 text-lg text-muted-foreground">
-        Real-time analytics with PowerBI, Tableau, and Google Data Studio.
-      </p>
-    </div>
+        id="analytics"
+        className="py-20 sm:py-32 bg-green-50 relative z-10"
+      >
+        <div className="container">
+          {/* Heading */}
+          <div className="mx-auto max-w-2xl text-center">
+            <Badge variant="secondary" className="mb-4">
+              <BarChart className="mr-1 h-3 w-3" /> Data-Driven Insights
+            </Badge>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-green-700">
+              HR Analytics & Dashboards
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Real-time analytics with PowerBI, Tableau, and Google Data Studio.
+            </p>
+          </div>
 
-    {/* Dashboards */}
-    <motion.div
-      className="mx-auto mt-16 grid grid-cols-1 md:grid-cols-3 gap-6"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
-      viewport={{ once: true }}
-    >
-      {[
-        {
-          src: "/dashboards/1.png",
-          alt: "PowerBI Dashboard",
-          label: "PowerBI",
-        },
-        {
-          src: "/dashboards/2.png",
-          alt: "Tableau Dashboard",
-          label: "Tableau",
-        },
-        {
-          src: "/dashboards/3.png",
-          alt: "Google Data Studio Dashboard",
-          label: "Google Data Studio",
-        },
-      ].map((item, i) => (
-        <motion.figure
-          key={i}
-          whileHover={{ scale: 1.03 }}
-          transition={{ duration: 0.3 }}
-          className="flex flex-col items-center w-full group rounded-xl border border-green-200 overflow-hidden shadow-md hover:shadow-lg hover:shadow-green-200 transition-shadow"
-        >
-          {/* Dashboard Image */}
-          <img
-            src={item.src}
-            alt={item.alt}
-            loading="lazy"
-            className="w-full h-28 md:h-64 object-cover"
-          />
+          {/* Dashboards */}
+          <motion.div
+            className="mx-auto mt-16 grid grid-cols-1 md:grid-cols-3 gap-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+          >
+            {[
+              {
+                src: "/dashboards/1.png",
+                alt: "PowerBI Dashboard",
+                label: "PowerBI",
+              },
+              {
+                src: "/dashboards/2.png",
+                alt: "Tableau Dashboard",
+                label: "Tableau",
+              },
+              {
+                src: "/dashboards/3.png",
+                alt: "Google Data Studio Dashboard",
+                label: "Google Data Studio",
+              },
+            ].map((item, i) => (
+              <motion.figure
+                key={i}
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-col items-center w-full group rounded-xl border border-green-200 overflow-hidden shadow-md hover:shadow-lg hover:shadow-green-200 transition-shadow"
+              >
+                {/* Dashboard Image */}
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  loading="lazy"
+                  className="w-full h-28 md:h-64 object-cover"
+                />
 
-          {/* Caption */}
-          <figcaption className="mt-3 flex items-center gap-2 pb-4">
-            <BarChart className="h-4 w-4 text-green-600" />
-            <span className="text-sm text-muted-foreground group-hover:text-green-700 transition-colors">
-              {item.label}
-            </span>
-          </figcaption>
-        </motion.figure>
-      ))}
-    </motion.div>
-  </div>
-</section>
+                {/* Caption */}
+                <figcaption className="mt-3 flex items-center gap-2 pb-4">
+                  <BarChart className="h-4 w-4 text-green-600" />
+                  <span className="text-sm text-muted-foreground group-hover:text-green-700 transition-colors">
+                    {item.label}
+                  </span>
+                </figcaption>
+              </motion.figure>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
 
       {/* Divider */}
       <div className="w-full h-16 bg-gradient-to-b from-green-50 to-muted/50 -skew-y-2"></div>
 
       {/* Talent Mapping Section */}
-      {/* <section id="talent" className="py-20 sm:py-32 bg-muted/50 relative z-10">
+
+      <section
+        id="talent"
+        className="py-20 sm:py-32 bg-muted/50 relative z-10"
+      >
         <div className="container">
-          <div className="mx-auto max-w-2xl text-center">
+
+          {/* Heading */}
+          <div className="mx-auto max-w-2xl text-center mb-16">
             <Badge variant="secondary" className="mb-4">
               <Users className="mr-1 h-3 w-3" /> Strategic Talent Sourcing
             </Badge>
@@ -384,103 +390,56 @@ const Services = () => {
               Identify and attract top talent with precision.
             </p>
           </div>
+
+          {/* Content */}
           <motion.div
-            className="mx-auto mt-16 max-w-4xl flex flex-col items-center gap-6"
+            className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
           >
+            {/* Left: Image */}
             <motion.img
-              src="/talent.jpg"
+              src="/talent1.jpg"
               alt="Talent Mapping Visualization"
-              className="w-full max-w-md h-auto rounded-lg border border-green-200"
+              className="w-full rounded-2xl border border-green-200 shadow-md h-96"
               loading="lazy"
-              whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(0, 128, 0, 0.2)" }}
+              whileHover={{
+                scale: 1.03,
+                boxShadow: "0 15px 25px rgba(0, 128, 0, 0.25)",
+              }}
               transition={{ duration: 0.3 }}
             />
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <Users className="h-4 w-4 text-green-600" />
-                <span className="text-sm text-muted-foreground">Talent Insights</span>
+
+            {/* Right: Text + Key Benefits */}
+            <div className="bg-white/70 rounded-2xl shadow-sm border border-green-100 p-8 md:p-10 text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
+                <Users className="h-5 w-5 text-green-600" />
+                <span className="text-base font-medium text-green-700">
+                  Talent Insights
+                </span>
               </div>
-              <p className="text-muted-foreground">
-                Comprehensive reports on candidate details, locations, costs, and social profiles.
+
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Comprehensive reports on{" "}
+                <span className="font-semibold text-green-700">candidate details</span>,{" "}
+                <span className="font-semibold text-green-700">locations</span>,{" "}
+                <span className="font-semibold text-green-700">costs</span>, and{" "}
+                <span className="font-semibold text-green-700">social profiles</span>. Empower your HR strategy with real-time, actionable intelligence.
               </p>
+
+              {/* New Key Benefits List */}
+              <ul className="mt-6 list-disc list-inside text-muted-foreground space-y-2">
+                <li>Pinpoint talent pools in specific locations</li>
+                <li>Save time with automated candidate profiling</li>
+                <li>Enhance recruitment strategy with data-driven insights</li>
+              </ul>
             </div>
           </motion.div>
+
         </div>
-      </section> */}
-
-      <section
-  id="talent"
-  className="py-20 sm:py-32 bg-muted/50 relative z-10"
->
-  <div className="container">
-    {/* Heading */}
-    <div className="mx-auto max-w-2xl text-center mb-16">
-      <Badge variant="secondary" className="mb-4">
-        <Users className="mr-1 h-3 w-3" /> Strategic Talent Sourcing
-      </Badge>
-      <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-green-700">
-        Talent Mapping
-      </h2>
-      <p className="mt-4 text-lg text-muted-foreground">
-        Identify and attract top talent with precision.
-      </p>
-    </div>
-
-    {/* Content */}
-    <motion.div
-      className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
-      viewport={{ once: true }}
-    >
-      {/* Left: Image */}
-      <motion.img
-        src="/talent1.jpg"
-        alt="Talent Mapping Visualization"
-        className="w-full rounded-2xl border border-green-200 shadow-md h-96"
-        loading="lazy"
-        whileHover={{
-          scale: 1.03,
-          boxShadow: "0 15px 25px rgba(0, 128, 0, 0.25)",
-        }}
-        transition={{ duration: 0.3 }}
-      />
-
-      {/* Right: Text */}
-      <div className="bg-white/70 rounded-2xl shadow-sm border border-green-100 p-8 md:p-10 text-center md:text-left">
-        <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
-          <Users className="h-5 w-5 text-green-600" />
-          <span className="text-base font-medium text-green-700">
-            Talent Insights
-          </span>
-        </div>
-        <p className="text-lg text-muted-foreground leading-relaxed">
-          Comprehensive reports on{" "}
-          <span className="font-semibold text-green-700">candidate details</span>,{" "}
-          <span className="font-semibold text-green-700">locations</span>,{" "}
-          <span className="font-semibold text-green-700">costs</span>, and{" "}
-          <span className="font-semibold text-green-700">social profiles</span>. 
-          Empower your HR strategy with real-time, actionable intelligence.
-        </p>
-
-        {/* CTA Box */}
-        <motion.a
-          href="/ai-recruiter"
-          whileHover={{ scale: 1.05, backgroundColor: "rgb(22 163 74)" }} // green-600
-          transition={{ duration: 0.3 }}
-          className="mt-6 inline-block px-6 py-3 rounded-xl bg-green-700 text-white font-medium shadow-md hover:shadow-lg transition-colors"
-        >
-          Visit our AI Recruiter →
-        </motion.a>
-      </div>
-    </motion.div>
-  </div>
-</section>
+      </section>
 
 
       {/* Divider */}
@@ -551,82 +510,82 @@ const Services = () => {
         </div>
       </section> */}
       <section
-  id="learning"
-  className="py-20 sm:py-32 bg-green-50 relative z-10"
->
-  <div className="container">
-    <div className="mx-auto max-w-2xl text-center mb-12">
-      <Badge variant="secondary" className="mb-4">
-        <BookOpen className="mr-1 h-3 w-3" /> Empowering Growth
-      </Badge>
-      <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-green-700">
-        Learning & Development
-      </h2>
-      {/* <p className="mt-4 text-lg text-muted-foreground">
+        id="learning"
+        className="py-20 sm:py-32 bg-green-50 relative z-10"
+      >
+        <div className="container">
+          <div className="mx-auto max-w-2xl text-center mb-12">
+            <Badge variant="secondary" className="mb-4">
+              <BookOpen className="mr-1 h-3 w-3" /> Empowering Growth
+            </Badge>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-green-700">
+              Learning & Development
+            </h2>
+            {/* <p className="mt-4 text-lg text-muted-foreground">
         Training in Excel, analytics, and DEI for individuals and organizations.
       </p> */}
-    </div>
-
-    <motion.div
-      className="flex w-full h-[400px] md:h-[400px] overflow-hidden"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
-      viewport={{ once: true }}
-    >
-      {[
-        {
-          src: "/LD/prog.jpg",
-          alt: "Microsoft Excel Training",
-          label: "Online Programs",
-          link: "https://support.microsoft.com/en-us/excel",
-        },
-        {
-          src: "/LD/web.jpg",
-          alt: "Data Analytics Tools Training",
-          label: "Webinars",
-          link: "https://powerbi.microsoft.com/en-us/learning/",
-        },
-        {
-          src: "/LD/learn.png",
-          alt: "DEI Sensitization Training",
-          label: "Learning",
-          link: "https://www.shrm.org/topics-tools/topics/diversity-equity-inclusion",
-        },
-      ].map((item, i) => (
-        <motion.div
-          key={i}
-          className="relative flex-1 group cursor-pointer"
-          whileHover={{ flex: 2 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-        >
-          {/* Background image */}
-          <a
-            href={item.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full h-full"
-          >
-            <img
-              src={item.src}
-              alt={item.alt}
-              className="w-full h-full object-cover transition duration-500 group-hover:blur-sm"
-              loading="lazy"
-            />
-          </a>
-
-          {/* Overlay text */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
-            <div className="bg-green-800 bg-opacity-70 text-white p-4 rounded-lg text-center">
-              <BookOpen className="mx-auto mb-2 h-6 w-6" />
-              <h3 className="text-lg font-semibold">{item.label}</h3>
-            </div>
           </div>
-        </motion.div>
-      ))}
-    </motion.div>
-  </div>
-</section>
+
+          <motion.div
+            className="flex w-full h-[400px] md:h-[400px] overflow-hidden"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+          >
+            {[
+              {
+                src: "/LD/prog.jpg",
+                alt: "Microsoft Excel Training",
+                label: "Online Programs",
+                link: "https://support.microsoft.com/en-us/excel",
+              },
+              {
+                src: "/LD/web.jpg",
+                alt: "Data Analytics Tools Training",
+                label: "Webinars",
+                link: "https://powerbi.microsoft.com/en-us/learning/",
+              },
+              {
+                src: "/LD/learn.png",
+                alt: "DEI Sensitization Training",
+                label: "Learning",
+                link: "https://www.shrm.org/topics-tools/topics/diversity-equity-inclusion",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                className="relative flex-1 group cursor-pointer"
+                whileHover={{ flex: 2 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+              >
+                {/* Background image */}
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full h-full"
+                >
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="w-full h-full object-cover transition duration-500 group-hover:blur-sm"
+                    loading="lazy"
+                  />
+                </a>
+
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
+                  <div className="bg-green-800 bg-opacity-70 text-white p-4 rounded-lg text-center">
+                    <BookOpen className="mx-auto mb-2 h-6 w-6" />
+                    <h3 className="text-lg font-semibold">{item.label}</h3>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
 
       {/* CTA Section */}
@@ -658,7 +617,7 @@ const Services = () => {
       </motion.section> */}
 
       {/* Back to Top Button */}
-                {/* <motion.a
+      {/* <motion.a
   onClick={(e) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });

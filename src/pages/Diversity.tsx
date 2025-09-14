@@ -258,7 +258,7 @@ const Diversity = () => {
                   <>
                     <p className="text-red-600 font-medium mb-2">{item.myth}</p>
                     <span className="text-sm text-gray-500 italic">
-                      (Reveal to bust the myth 👀)
+                      (Tap to bust the myth 👀)
                     </span>
                   </>
                 )}

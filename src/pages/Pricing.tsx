@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import PricingPlans from "@/components/PricingPlans";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
@@ -9,11 +10,11 @@ const Pricing = () => {
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-14 items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2">
-            <ArrowLeft className="h-4 w-4" />
-            <img 
-              src="/lovable-uploads/8b1d9995-e628-4d9d-bd6e-ccc312b188ca.png" 
-              alt="EFICAZ Logo" 
+          <Link to="/ai-recruiter" className="flex items-center space-x-2">
+            <ArrowLeft className="h-4 w-4 mr-5" />
+            <img
+              src="/Logo.png"
+              alt="EFICAZ Logo"
               className="h-8 w-auto"
             />
           </Link>
@@ -29,11 +30,14 @@ const Pricing = () => {
       </header>
 
       {/* Pricing Section */}
- 
-        <div className="container">
-          <PricingPlans />
-        </div>
- 
+
+      <div className="container">
+        <PricingPlans />
+      </div>
+      <footer className="w-full">
+        <Footer />
+      </footer>
+
     </div>
   );
 };
