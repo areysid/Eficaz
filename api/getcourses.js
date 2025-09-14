@@ -6,10 +6,17 @@ export default async function handler(req, res) {
       throw new Error("Missing GOOGLE_SERVICE_ACCOUNT environment variable");
     }
 
+    console.log("GOOGLE_SERVICE_ACCOUNT is present.");
+
     let serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
+
+    console.log("Parsed service account keys:", Object.keys(serviceAccount));
+    console.log("Private key sample (first 30 chars):", serviceAccount.private_key.slice(0, 30));
 
     // Fix private key newlines
     serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, '\n');
+
+    console.log("Fixed private key sample (first 30 chars):", serviceAccount.private_key.slice(0, 30));
 
     const auth = new google.auth.GoogleAuth({
       credentials: serviceAccount,
@@ -21,6 +28,8 @@ export default async function handler(req, res) {
     const RANGE = "Courses!A:G";
 
     const client = await auth.getClient();
+    console.log("Auth client obtained successfully.");
+
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: SPREADSHEET_ID,
       range: RANGE,
@@ -33,7 +42,6 @@ export default async function handler(req, res) {
     const headers = rows[0];
     const data = rows.slice(1).map((row) => {
       const obj = {};
-
       headers.forEach((header, i) => {
         obj[header] = row[i] || "";
       });
@@ -53,7 +61,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json(data);
   } catch (err) {
-    console.error(err);
+    console.error("Error caught:", err);
     return res.status(500).json({ error: err.message || String(err) });
   }
 };
