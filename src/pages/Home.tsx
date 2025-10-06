@@ -220,7 +220,7 @@ const Home = () => {
       </motion.section>
 
       {/* Hero Carousel */}
-      <section className="relative w-full h-[50vh] overflow-hidden bg-black flex items-center">
+      <section className="relative w-full h-[20vh] sm:h-[70vh] overflow-hidden bg-black flex items-center">
         <div
           className="flex transition-transform duration-1000 h-full"
           style={{
@@ -236,7 +236,7 @@ const Home = () => {
               <img
                 src={img}
                 alt={`Slide ${idx + 1}`}
-                className="h-full w-full object-cover"
+                className="w-full h-full object-contain sm:object-cover"
               />
             </div>
           ))}
@@ -254,6 +254,7 @@ const Home = () => {
           ))}
         </div>
       </section>
+
 
       {/* Services Section */}
       <motion.section
@@ -345,9 +346,9 @@ const Home = () => {
 
           {/* Right Content */}
           <div className="flex justify-center">
-          <WebinarTimeline />
+            <WebinarTimeline />
           </div>
-          
+
         </div>
       </motion.section>
 
@@ -359,7 +360,7 @@ const Home = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="py-20"
+        className="py-20 px-4"
       >
         <div className="container">
           <div className="text-center space-y-4 mb-12">
@@ -368,86 +369,32 @@ const Home = () => {
               Master recruitment analytics with our comprehensive courses
             </p>
           </div>
-          {/* <div className="flex">
-          <Card className="max-w-4xl mx-auto">
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <div>
-                  <CardTitle className="text-2xl">
-                    Recruitment Dashboards using Looker Studio
-                  </CardTitle>
-                  <CardDescription className="mt-2">
-                    Welcome to our comprehensive course on mastering
-                    recruitment dashboards using Looker Studio! In this course,
-                    we'll take you on a journey to become a proficient recruiter
-                    armed with the power of data visualization.
-                  </CardDescription>
-                </div>
-                <Badge variant="secondary">Featured</Badge>
-              </div>
-            </CardHeader>
-            
-            <CardContent>
-              <div className="space-y-4">
-                <div className="flex items-center gap-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-4 w-4 fill-yellow-400 text-yellow-400"
-                    />
-                  ))}
-                  <span className="text-sm text-muted-foreground">
-                    4.8 (220 learners)
-                  </span>
-                </div>
-                <p className="text-muted-foreground">
-                  Designed for recruiters, by recruiters: Our course is
-                  tailored to meet the specific needs and challenges faced by
-                  recruitment professionals.
-                </p>
-                <div className="flex justify-between items-center">
-                  <Button asChild>
-                    <Link to="/courses">Buy Now</Link>
-                  </Button>
-                  <Button asChild variant="outline">
-                    <Link to="/courses">View All Courses</Link>
-                  </Button>
-                </div>
-              </div>
-              
-            </CardContent>
-            <div>
-                <img
-                  src="course.png"
-                  alt="Course Thumbnail"
-                  className="rounded-lg w-full object-cover max-h-60"
-                />
-              </div>
-            
-          </Card>
-          </div> */}
-          <div className="flex">
-            <Card className="max-w-5xl mx-auto flex flex-row">
+
+          {/* Responsive Wrapper */}
+          <div className="flex justify-center">
+            <Card className="max-w-5xl w-full mx-auto flex flex-col lg:flex-row overflow-hidden">
               {/* Left Content */}
-              <div className="flex-1">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
+              <div className="flex-1 p-4 sm:p-6">
+                <CardHeader className="p-0">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                     <div>
                       <CardTitle className="text-2xl">
                         Recruitment Dashboards using Looker Studio
                       </CardTitle>
-                      <CardDescription className="mt-2">
+                      <CardDescription className="mt-2 text-sm sm:text-base">
                         Welcome to our comprehensive course on mastering recruitment
                         dashboards using Looker Studio! In this course, we'll take you
                         on a journey to become a proficient recruiter armed with the
                         power of data visualization.
                       </CardDescription>
                     </div>
-                    <Badge variant="secondary">Featured</Badge>
+                    <Badge variant="secondary" className="w-fit self-start sm:self-auto">
+                      Featured
+                    </Badge>
                   </div>
                 </CardHeader>
 
-                <CardContent>
+                <CardContent className="p-0 mt-4">
                   <div className="space-y-4">
                     <div className="flex items-center gap-2">
                       {[...Array(5)].map((_, i) => (
@@ -460,16 +407,18 @@ const Home = () => {
                         4.8 (220 learners)
                       </span>
                     </div>
-                    <p className="text-muted-foreground">
+
+                    <p className="text-muted-foreground text-sm sm:text-base">
                       Designed for recruiters, by recruiters: Our course is tailored to
                       meet the specific needs and challenges faced by recruitment
                       professionals.
                     </p>
-                    <div className="flex justify-between items-center">
-                      <Button asChild>
+
+                    <div className="flex flex-col sm:flex-row justify-between items-center gap-3 mt-4">
+                      <Button asChild className="w-full sm:w-auto">
                         <Link to="/courses">Buy Now</Link>
                       </Button>
-                      <Button asChild variant="outline">
+                      <Button asChild variant="outline" className="w-full sm:w-auto">
                         <Link to="/courses">View All Courses</Link>
                       </Button>
                     </div>
@@ -478,71 +427,71 @@ const Home = () => {
               </div>
 
               {/* Right Image */}
-              <div className="w-1/3 flex items-center">
+              <div className="w-full lg:w-1/3">
                 <img
                   src="courses/RecruitmentDashboardsusingLookerStudio(GoogleDataStudio).png"
                   alt="Course Thumbnail"
-                  className="rounded-r-lg object-cover h-full w-full"
+                  className="rounded-b-lg lg:rounded-r-lg lg:rounded-b-none object-cover w-full h-64 lg:h-full"
                 />
               </div>
             </Card>
           </div>
-
         </div>
       </motion.section>
+
 
       {/* Testimonials Section */}
 
       <ReviewsSection />
 
       {/* Partners Section */}
-         <motion.section
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
-      className="py-20 bg-white"
-    >
-      <div className="container text-center space-y-10">
-        <h2 className="text-3xl font-bold">Our Clients</h2>
+      <motion.section
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="py-20 bg-white"
+      >
+        <div className="container text-center space-y-10">
+          <h2 className="text-3xl font-bold">Our Clients</h2>
 
-        {/* Desktop Grid */}
-        <div className="hidden md:grid grid-cols-5 gap-8 items-center justify-center">
-          {partnerLogos.map((logo, idx) => (
-            <div key={idx} className="flex items-center justify-center">
-              <img
-                src={logo}
-                alt={`Partner ${idx + 1}`}
-                className="h-24 w-auto object-contain"
-              />
-            </div>
-          ))}
+          {/* Desktop Grid */}
+          <div className="hidden md:grid grid-cols-5 gap-8 items-center justify-center">
+            {partnerLogos.map((logo, idx) => (
+              <div key={idx} className="flex items-center justify-center">
+                <img
+                  src={logo}
+                  alt={`Partner ${idx + 1}`}
+                  className="h-24 w-auto object-contain"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile Custom Carousel */}
+          <div className="md:hidden relative flex items-center justify-center">
+            <button
+              onClick={handlePrev}
+              className="absolute left-4 z-10 text-2xl text-green-600"
+            >
+              <FaChevronLeft />
+            </button>
+
+            <img
+              src={partnerLogos[currentIndex]}
+              alt={`Partner ${currentIndex + 1}`}
+              className="h-24 w-auto object-contain mx-auto"
+            />
+
+            <button
+              onClick={handleNext}
+              className="absolute right-4 z-10 text-2xl text-green-600"
+            >
+              <FaChevronRight />
+            </button>
+          </div>
         </div>
-
-        {/* Mobile Custom Carousel */}
-        <div className="md:hidden relative flex items-center justify-center">
-          <button
-            onClick={handlePrev}
-            className="absolute left-4 z-10 text-2xl text-green-600"
-          >
-            <FaChevronLeft />
-          </button>
-
-          <img
-            src={partnerLogos[currentIndex]}
-            alt={`Partner ${currentIndex + 1}`}
-            className="h-24 w-auto object-contain mx-auto"
-          />
-
-          <button
-            onClick={handleNext}
-            className="absolute right-4 z-10 text-2xl text-green-600"
-          >
-            <FaChevronRight />
-          </button>
-        </div>
-      </div>
-    </motion.section>
+      </motion.section>
 
 
       {/* Footer */}
