@@ -6,17 +6,8 @@ export default async function handler(req, res) {
       throw new Error("Missing GOOGLE_SERVICE_ACCOUNT environment variable");
     }
 
-    console.log("GOOGLE_SERVICE_ACCOUNT is present.");
-
-    let serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
-
-    console.log("Parsed service account keys:", Object.keys(serviceAccount));
-    console.log("Private key sample (first 30 chars):", serviceAccount.private_key.slice(0, 30));
-
-    // Fix private key newlines
-    serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, '\n');
-
-    console.log("Fixed private key sample (first 30 chars):", serviceAccount.private_key.slice(0, 30));
+    const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
+    serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, "\n");
 
     const auth = new google.auth.GoogleAuth({
       credentials: serviceAccount,
@@ -27,13 +18,9 @@ export default async function handler(req, res) {
     const SPREADSHEET_ID = "12Nrzk8Ef_OmiKO6gjK6LhrbRoGgz9OUPkMqzUfhhVzU";
     const RANGE = "Courses!A:G";
 
-    const client = await auth.getClient();
-    console.log("Auth client obtained successfully.");
-
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: SPREADSHEET_ID,
       range: RANGE,
-      auth: client,
     });
 
     const rows = response.data.values || [];
@@ -46,14 +33,10 @@ export default async function handler(req, res) {
         obj[header] = row[i] || "";
       });
 
-      if (obj.Image) {
-        const match = obj.Image.match(/\/d\/(.*?)\//);
-        if (match && match[1]) {
-          obj.Image = `https://drive.google.com/uc?export=view&id=${match[1]}`;
-        }
-      } else {
-        const fileName = obj.Title.replace(/\s/g, "") + ".png";
-        obj.Image = `/courses/${fileName}`;
+      // ✅ New logic: if Image URL is given, use it directly.
+      // If missing, fallback to placeholder.
+      if (!obj.Image || !obj.Image.startsWith("http")) {
+        obj.Image = "/courses/placeholder.jpg";
       }
 
       return obj;
@@ -64,4 +47,4 @@ export default async function handler(req, res) {
     console.error("Error caught:", err);
     return res.status(500).json({ error: err.message || String(err) });
   }
-};
+}
