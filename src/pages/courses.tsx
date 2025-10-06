@@ -21,7 +21,6 @@ const Courses: React.FC = () => {
   const [authorFilter, setAuthorFilter] = useState<string | null>(null);
   const [statusFilter, setStatusFilter] = useState<"DRAFT" | "LIVE" | null>(null);
 
-  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -58,7 +57,6 @@ const Courses: React.FC = () => {
     <div className="flex flex-col min-h-screen">
       <MainNavigation />
 
-      {/* Loading Bar */}
       {loading && (
         <div className="w-full py-4 mt-12">
           <div className="h-1 w-full bg-emerald-200 relative overflow-hidden rounded">
@@ -70,15 +68,16 @@ const Courses: React.FC = () => {
         </div>
       )}
 
-      {/* Breadcrumb */}
       <div className="bg-gray-50 w-full border-b pt-16">
         <div className="container mx-auto px-6 py-4 text-sm text-muted-foreground">
-          <a href="/" className="hover:text-green-600">Home</a> &gt;{" "}
-          <span className="text-green-600">All Courses</span>
+          <a href="/" className="hover:text-green-600">
+            Home
+          </a>{" "}
+          &gt; <span className="text-green-600">All Courses</span>
         </div>
       </div>
 
-      <main className="container mx-auto px-6 py-10 flex flex-1 gap-8">
+      <main className="container mx-auto px-6 py-10 flex flex-col lg:flex-row flex-1 gap-8">
         {/* Courses Section */}
         <div className="w-full lg:w-3/4 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredCourses.map((course, idx) => (
@@ -92,7 +91,7 @@ const Courses: React.FC = () => {
               <motion.div
                 className="bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-2xl transition flex flex-col"
                 whileHover={{ scale: 1.02 }}
-                style={{ minHeight: "440px" }} // fixed height for all cards
+                style={{ minHeight: "440px" }}
               >
                 <div className="relative h-60 w-full">
                   <img
@@ -113,7 +112,9 @@ const Courses: React.FC = () => {
 
                 <div className="px-4 pt-4 pb-2 text-center flex-1 flex flex-col justify-between">
                   <div>
-                    <p className="text-sm text-muted-foreground pt-4">{course.Author}</p>
+                    <p className="text-sm text-muted-foreground pt-4">
+                      {course.Author}
+                    </p>
                     <p className="font-semibold text-lg mt-1">{course.Title}</p>
                   </div>
                   <div className="bg-gray-100 py-1 mt-2 text-center font-medium text-green-700">
@@ -195,13 +196,15 @@ const Courses: React.FC = () => {
                   alt={course.Title}
                   className="w-12 h-12 object-cover rounded-md mr-3"
                   onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).src =
-                        "/courses/placeholder.jpg";
-                    }}
+                    (e.currentTarget as HTMLImageElement).src =
+                      "/courses/placeholder.jpg";
+                  }}
                 />
                 <div>
                   <p className="text-sm font-medium">{course.Title}</p>
-                  <p className="text-xs text-green-600">{getStatusText(course.Status)}</p>
+                  <p className="text-xs text-green-600">
+                    {getStatusText(course.Status)}
+                  </p>
                 </div>
               </div>
             ))}
