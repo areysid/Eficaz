@@ -10,24 +10,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Users,
-  TrendingUp,
-  BookOpen,
-  Calendar,
-  Star,
-} from "lucide-react";
+import { Users, TrendingUp, BookOpen, Calendar, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 import ReviewsSection from "@/components/ReviewsSection";
-
-import Calendar1 from "@/components/Calender";
-
-
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import WebinarTimeline from "@/components/Calender";
-
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const carouselImages = [
   "/Banner/Banner1.jpg",
@@ -69,9 +58,7 @@ const useCountUp = (target: number, duration = 2000, trigger: boolean) => {
       if (!start) start = timestamp;
       const progress = Math.min((timestamp - start) / duration, 1);
       setCount(Math.floor(progress * target));
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      }
+      if (progress < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
   }, [target, duration, trigger]);
@@ -80,14 +67,19 @@ const useCountUp = (target: number, duration = 2000, trigger: boolean) => {
 };
 
 const Home = () => {
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [startCount, setStartCount] = useState(false);
   const counterRef = useRef<HTMLDivElement | null>(null);
+  const webinarRef = useRef<HTMLDivElement | null>(null);
 
   const corporationsCount = useCountUp(100, 2000, startCount);
   const yearsCount = useCountUp(12, 2000, startCount);
+
+  // scroll to webinar section
+  const scrollToWebinar = () => {
+    webinarRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   // carousel autoplay
   useEffect(() => {
@@ -113,14 +105,13 @@ const Home = () => {
     return () => observer.disconnect();
   }, []);
 
-  // partrners autoplay
+  // partners autoplay
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) =>
         prev === partnerLogos.length - 1 ? 0 : prev + 1
       );
     }, 2000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -140,6 +131,25 @@ const Home = () => {
     <div className="min-h-screen bg-background relative overflow-hidden">
       <MainNavigation />
 
+      {/* 🔸 Flash Banner */}
+      <motion.div
+        initial={{ y: -30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white py-3 px-4 flex flex-col md:flex-row items-center justify-between gap-3 shadow-lg mt-16"
+      >
+        <p className="text-center text-sm md:text-base font-medium">
+          📢 <span className="font-semibold">Upcoming Webinar:</span> HR Dashboards using Power BI on{" "}
+          <span className="underline">25th October</span>
+        </p>
+        <Button
+          variant="secondary"
+          onClick={scrollToWebinar}
+          className="bg-white text-indigo-700 font-semibold hover:bg-gray-200 transition"
+        >
+          Learn More
+        </Button>
+      </motion.div>
 
       {/* About Section */}
       <motion.section
@@ -147,7 +157,7 @@ const Home = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="relative py-20 bg-gradient-to-r from-primary/5 to-accent/5"
+        className="relative pt-10 pb-20 bg-gradient-to-r from-primary/5 to-accent/5"
       >
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -157,7 +167,6 @@ const Home = () => {
               </Badge>
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight block text-accent">
                 EFICAZ
-                {/* <span className="block text-accent">Consultants</span> */}
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Eficaz established in 2013, began its journey with humble
@@ -166,10 +175,7 @@ const Home = () => {
                 corporations in India to discover exceptional talent.
               </p>
               <p className="text-muted-foreground">
-                We collaborate with clients to design streamlined
-                organizational structures and pinpoint key roles. Our expertise
-                lies in identifying and onboarding the right talent, while
-                providing valuable insights on the Talent Market.
+                We collaborate with clients to design streamlined organizational structures and pinpoint key roles.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
@@ -220,7 +226,7 @@ const Home = () => {
       </motion.section>
 
       {/* Hero Carousel */}
-      <section className="relative w-full h-[20vh] sm:h-[70vh] overflow-hidden bg-black flex items-center">
+      <section className="relative w-full h-[20vh] sm:h-[50vh] overflow-hidden bg-black flex items-center">
         <div
           className="flex transition-transform duration-1000 h-full"
           style={{
@@ -255,66 +261,9 @@ const Home = () => {
         </div>
       </section>
 
-
-      {/* Services Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="py-20"
-      >
-        <div className="container">
-          <div className="text-center space-y-4 mb-12">
-            <h2 className="text-3xl font-bold">Our Services</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              We provide comprehensive recruitment and consulting services to
-              help organizations find the right talent.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Users className="h-10 w-10 text-primary mb-2" />
-                <CardTitle className="text-lg">Talent Acquisition</CardTitle>
-                <CardDescription>
-                  Finding the right talent for your organization's needs.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <TrendingUp className="h-10 w-10 text-accent mb-2" />
-                <CardTitle className="text-lg">Market Insights</CardTitle>
-                <CardDescription>
-                  Valuable insights on talent market trends and dynamics.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <BookOpen className="h-10 w-10 text-primary mb-2" />
-                <CardTitle className="text-lg">Training & Development</CardTitle>
-                <CardDescription>
-                  Professional courses and skill development programs.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Calendar className="h-10 w-10 text-accent mb-2" />
-                <CardTitle className="text-lg">Webinars</CardTitle>
-                <CardDescription>
-                  Regular webinars on recruitment and HR best practices.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
-        </div>
-      </motion.section>
-
       {/* Webinar Section */}
       <motion.section
+        ref={webinarRef}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -322,125 +271,48 @@ const Home = () => {
         className="py-20 bg-muted/30"
       >
         <div className="container grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-          {/* Left Content */}
           <div className="space-y-6">
-
             <h2 className="text-3xl font-bold">
               Making Your Learning More Enjoyable
             </h2>
-
             <p className="text-muted-foreground">
               Join our upcoming webinar to learn about the latest trends in recruitment and talent acquisition.
             </p>
-
-            {/* Informative Infographic */}
             <div className="space-y-4">
               <h4 className="font-semibold text-lg">Did you know?</h4>
               <ul className="list-disc list-inside text-muted-foreground space-y-2">
                 <li>75% of recruiters rely on digital webinars for industry insights.</li>
-                <li>Interactive webinars boost engagement by 50% compared to pre-recorded videos.</li>
+                <li>
+                  Interactive webinars boost engagement by 50% compared to pre-recorded videos.
+                </li>
               </ul>
+            </div>
+
+            {/* 👇 CTA Buttons */}
+            <div className="flex flex-wrap gap-4 pt-2">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
+                <a
+                  href="https://wa.me/911234567890?text=Hi!%20I'm%20interested%20in%20your%20upcoming%20webinar."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Get in Touch
+                </a>
+              </Button>
+
+              <Button asChild variant="outline" size="lg">
+                <a href="/webinars">Visit Webinar Page</a>
+              </Button>
             </div>
           </div>
 
-          {/* Right Content */}
           <div className="flex justify-center">
             <WebinarTimeline />
           </div>
-
         </div>
       </motion.section>
 
 
-
-      {/* Featured Course Section */}
-      <motion.section
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="py-20 px-4"
-      >
-        <div className="container">
-          <div className="text-center space-y-4 mb-12">
-            <h2 className="text-3xl font-bold">Featured Course</h2>
-            <p className="text-muted-foreground">
-              Master recruitment analytics with our comprehensive courses
-            </p>
-          </div>
-
-          {/* Responsive Wrapper */}
-          <div className="flex justify-center">
-            <Card className="max-w-5xl w-full mx-auto flex flex-col lg:flex-row overflow-hidden">
-              {/* Left Content */}
-              <div className="flex-1 p-4 sm:p-6">
-                <CardHeader className="p-0">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                    <div>
-                      <CardTitle className="text-2xl">
-                        Recruitment Dashboards using Looker Studio
-                      </CardTitle>
-                      <CardDescription className="mt-2 text-sm sm:text-base">
-                        Welcome to our comprehensive course on mastering recruitment
-                        dashboards using Looker Studio! In this course, we'll take you
-                        on a journey to become a proficient recruiter armed with the
-                        power of data visualization.
-                      </CardDescription>
-                    </div>
-                    <Badge variant="secondary" className="w-fit self-start sm:self-auto">
-                      Featured
-                    </Badge>
-                  </div>
-                </CardHeader>
-
-                <CardContent className="p-0 mt-4">
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className="h-4 w-4 fill-yellow-400 text-yellow-400"
-                        />
-                      ))}
-                      <span className="text-sm text-muted-foreground">
-                        4.8 (220 learners)
-                      </span>
-                    </div>
-
-                    <p className="text-muted-foreground text-sm sm:text-base">
-                      Designed for recruiters, by recruiters: Our course is tailored to
-                      meet the specific needs and challenges faced by recruitment
-                      professionals.
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row justify-between items-center gap-3 mt-4">
-                      <Button asChild className="w-full sm:w-auto">
-                        <Link to="/courses">Buy Now</Link>
-                      </Button>
-                      <Button asChild variant="outline" className="w-full sm:w-auto">
-                        <Link to="/courses">View All Courses</Link>
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </div>
-
-              {/* Right Image */}
-              <div className="w-full lg:w-1/3">
-                <img
-                  src="courses/RecruitmentDashboardsusingLookerStudio(GoogleDataStudio).png"
-                  alt="Course Thumbnail"
-                  className="rounded-b-lg lg:rounded-r-lg lg:rounded-b-none object-cover w-full h-64 lg:h-full"
-                />
-              </div>
-            </Card>
-          </div>
-        </div>
-      </motion.section>
-
-
-      {/* Testimonials Section */}
 
       <ReviewsSection />
 
@@ -455,7 +327,6 @@ const Home = () => {
         <div className="container text-center space-y-10">
           <h2 className="text-3xl font-bold">Our Clients</h2>
 
-          {/* Desktop Grid */}
           <div className="hidden md:grid grid-cols-5 gap-8 items-center justify-center">
             {partnerLogos.map((logo, idx) => (
               <div key={idx} className="flex items-center justify-center">
@@ -468,7 +339,6 @@ const Home = () => {
             ))}
           </div>
 
-          {/* Mobile Custom Carousel */}
           <div className="md:hidden relative flex items-center justify-center">
             <button
               onClick={handlePrev}
@@ -493,23 +363,6 @@ const Home = () => {
         </div>
       </motion.section>
 
-
-      {/* Footer */}
-      {/* <footer className="border-t py-12 relative z-10">
-        <div className="container text-center space-y-4">
-          <img src="/Logo.png" alt="EFICAZ Logo" className="h-8 w-auto mx-auto" />
-          <p className="text-sm text-muted-foreground">
-            © 2024 EFICAZ. AI-powered recruitment platform transforming the way companies hire talent.           </p>
-          <div className="flex justify-center gap-6 text-sm text-muted-foreground">
-            <Link to="/pricing" className="hover:text-primary transition">
-              Pricing
-            </Link>
-            <a href="mailto:contact@eficaz.ai" className="hover:text-primary transition">
-              Contact
-            </a>
-          </div>
-        </div>
-      </footer> */}
       <Footer />
     </div>
   );
