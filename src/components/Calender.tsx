@@ -1,6 +1,7 @@
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { CalendarIcon, ChevronLeft, ChevronRight } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"; // assuming you're using shadcn/ui
+import { CalendarIcon, ChevronLeft, ChevronRight, Video } from "lucide-react";
+import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "./ui/badge";
 
 const webinars = [
@@ -22,37 +23,47 @@ const webinars = [
     description:
       "Discover how Looker can help recruiters streamline data exploration and reporting for better talent acquisition.",
   },
-  // {
-  //   title: "HRA Webinar (Excel)",
-  //   date: "2025-10-18",
-  //   description:
-  //     "Master Excel tips & tricks specifically designed for recruitment data analysis and reporting.",
-  // },
-  // {
-  //   title: "HRA Hackathon",
-  //   date: "2025-10-25",
-  //   description:
-  //     "Participate in a hands-on recruitment data hackathon and solve real-world industry challenges.",
-  // },
 ];
-
-import { useState, useEffect } from "react";
 
 const WebinarTimeline = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % webinars.length);
-    }, 7000);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.4 } // adjust how much must be visible before triggering
+    );
 
-    return () => clearInterval(interval);
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
   }, []);
 
+  useEffect(() => {
+    let interval: NodeJS.Timeout | null = null;
+
+    if (isInView) {
+      interval = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % webinars.length);
+      }, 7000);
+    } else if (interval) {
+      clearInterval(interval);
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [isInView]);
+
   const handlePrev = () => {
-    setCurrentIndex(
-      currentIndex === 0 ? webinars.length - 1 : currentIndex - 1
-    );
+    setCurrentIndex(currentIndex === 0 ? webinars.length - 1 : currentIndex - 1);
   };
 
   const handleNext = () => {
@@ -62,11 +73,11 @@ const WebinarTimeline = () => {
   const webinar = webinars[currentIndex];
 
   return (
-    <section id="webinars" className="py-8 relative">
+    <section id="webinars" ref={sectionRef} className="py-8 relative">
       <div className="container">
         <div className="max-w-2xl text-center">
           <Badge variant="secondary">
-            <CalendarIcon className="mr-1 h-4 w-4" /> Upcoming Webinars
+            <Video className="mr-1 h-4 w-4" /> Upcoming Webinars
           </Badge>
         </div>
 
