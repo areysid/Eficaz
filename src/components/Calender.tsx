@@ -5,29 +5,35 @@ import { Badge } from "./ui/badge";
 
 const webinars = [
   {
-    title: "HRA Webinar (Power BI)",
-    date: "2025-09-27",
+    title: "HRA Webinar (Power BI) - Batch 1",
+    date: "2025-10-25",
+    description:
+      "Learn how Power BI enhances recruitment analytics and visualization to make informed hiring decisions.",
+  },
+  {
+    title: "HRA Webinar (Power BI) - Batch 2",
+    date: "2025-11-01",
     description:
       "Learn how Power BI enhances recruitment analytics and visualization to make informed hiring decisions.",
   },
   {
     title: "HRA Webinar (Looker)",
-    date: "2025-10-02",
+    date: "2025-11-02",
     description:
       "Discover how Looker can help recruiters streamline data exploration and reporting for better talent acquisition.",
   },
-  {
-    title: "HRA Webinar (Excel)",
-    date: "2025-10-18",
-    description:
-      "Master Excel tips & tricks specifically designed for recruitment data analysis and reporting.",
-  },
-  {
-    title: "HRA Hackathon",
-    date: "2025-10-25",
-    description:
-      "Participate in a hands-on recruitment data hackathon and solve real-world industry challenges.",
-  },
+  // {
+  //   title: "HRA Webinar (Excel)",
+  //   date: "2025-10-18",
+  //   description:
+  //     "Master Excel tips & tricks specifically designed for recruitment data analysis and reporting.",
+  // },
+  // {
+  //   title: "HRA Hackathon",
+  //   date: "2025-10-25",
+  //   description:
+  //     "Participate in a hands-on recruitment data hackathon and solve real-world industry challenges.",
+  // },
 ];
 
 import { useState, useEffect } from "react";
