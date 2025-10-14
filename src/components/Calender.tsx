@@ -6,22 +6,22 @@ import { Badge } from "./ui/badge";
 
 const webinars = [
   {
-    title: "HRA Webinar (Power BI) - Batch 1",
-    date: "2025-10-25",
+    title: "Learn HR Dashboards with Power BI - Batch 1",
+    date: "2025-10-31",
     description:
       "Learn how Power BI enhances recruitment analytics and visualization to make informed hiring decisions.",
   },
   {
-    title: "HRA Webinar (Power BI) - Batch 2",
+    title: "Learn HR Dashboards with Looker Studio",
     date: "2025-11-01",
     description:
-      "Learn how Power BI enhances recruitment analytics and visualization to make informed hiring decisions.",
+      "Discover how Looker can help recruiters streamline data exploration and reporting for better talent acquisition.",
   },
   {
-    title: "HRA Webinar (Looker)",
+    title: "Learn HR Dashboards with Power BI - Batch 2",
     date: "2025-11-02",
     description:
-      "Discover how Looker can help recruiters streamline data exploration and reporting for better talent acquisition.",
+      "Learn how Power BI enhances recruitment analytics and visualization to make informed hiring decisions.",
   },
 ];
 
