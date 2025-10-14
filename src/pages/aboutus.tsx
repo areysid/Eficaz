@@ -4,7 +4,6 @@ import MainNavigation from "@/components/MainNavigation";
 import { motion, Variants } from "framer-motion";
 import Footer from "@/components/Footer";
 
-
 const partnerLogos = [
   "/partners/partner1.png",
   "/partners/partner2.png",
@@ -18,7 +17,6 @@ const partnerLogos = [
   "/partners/partner10.png",
 ];
 
-
 const AboutUs: React.FC = () => {
   const [selected, setSelected] = useState<"mission" | "vision" | "values">("mission");
 
@@ -31,7 +29,6 @@ const AboutUs: React.FC = () => {
       "Our values are integrity, innovation, and commitment to delivering the best for our clients.",
   };
 
-  // Animation variants for expanding panels
   const panelVariants: Variants = {
     hidden: { opacity: 0, x: -50 },
     visible: (i: number) => ({
@@ -52,7 +49,7 @@ const AboutUs: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <MainNavigation />
 
       {/* Our Story */}
@@ -64,25 +61,23 @@ const AboutUs: React.FC = () => {
           className="flex flex-col justify-between"
         >
           <div>
-            <h2 className="text-4xl font-bold mb-6 text-primary">
-              Our Story
-            </h2>
+            <h2 className="text-4xl font-bold mb-6 text-primary">Our Story</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Established in 2013, Eficaz began its journey with humble origins. 
-              Throughout the past ten years, the company has played a significant role in assisting 
+              Established in 2013, Eficaz began its journey with humble origins.
+              Throughout the past ten years, the company has played a significant role in assisting
               over 100 MNCs in India to discover exceptional talent.
             </p>
             <br />
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Our team is composed of seasoned experts, technical recruiters, and individuals who 
+              Our team is composed of seasoned experts, technical recruiters, and individuals who
               adopt a process-oriented approach to ensure a smooth recruitment process management.
             </p>
             <br />
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Eficaz seamlessly aligns talent with your organization’s unique needs, ensuring optimal 
-              workforce integration. Our clients trust us for concise and effective HR solutions that 
-              elevate their team and drive success. Drawing on our extensive experience across diverse 
-              industries such as Corporate Banking, Investment Banking, Manufacturing, Telecom, Insurance, 
+              Eficaz seamlessly aligns talent with your organization’s unique needs, ensuring optimal
+              workforce integration. Our clients trust us for concise and effective HR solutions that
+              elevate their team and drive success. Drawing on our extensive experience across diverse
+              industries such as Corporate Banking, Investment Banking, Manufacturing, Telecom, Insurance,
               and Retail, we ensure that you are fully supported.
             </p>
           </div>
@@ -102,51 +97,50 @@ const AboutUs: React.FC = () => {
       </section>
 
       {/* Divider */}
-      <div className="w-full h-16 bg-gradient-to-b from-background to-emerald-50 skew-y-2"></div>
+      <div className="w-full h-16 bg-gradient-to-b from-background to-emerald-50 skew-y-2 overflow-hidden"></div>
 
       {/* AshaJobs Section */}
-      <section className="bg-gradient-to-r from-emerald-50 to-lime-50 py-20 px-6">
+      <section className="bg-gradient-to-r from-emerald-50 to-lime-50 py-20 px-6 overflow-hidden">
         <motion.div
-          className="text-left flex"
+          className="text-left flex flex-col md:flex-row items-start gap-6"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="max-w-3xl">  
-          <h2 className="text-3xl font-bold mb-4 text-primary">
-            AshaJobs: Our DEI Initiative
-          </h2>
-          <p className="text-lg text-muted-foreground mb-6">
-            Our Flagship Program, AshaJobs represents the empowerment of workforce diversity, focusing 
-            to promote inclusive hiring in various industries & aiming to create an environment where 
-            equal opportunities are plentiful for Women, Specially-abled people, & LGBTQ+. We take
-            great joy in leveraging our expertise to bring unparalleled diversity to the world of 
-            employment.
-          </p>
-          <Link
-            to="/diversity"
-            className="inline-block px-6 py-3 rounded-full bg-emerald-600 text-white font-medium hover:bg-emerald-700 transition-transform hover:scale-105 hover:shadow-xl"
-          >
-            Learn more about AshaJobs →
-          </Link>
+          <div className="max-w-3xl flex-1">
+            <h2 className="text-3xl font-bold mb-4 text-primary">
+              AshaJobs: Our DEI Initiative
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6 pr-5">
+              Our Flagship Program, AshaJobs represents the empowerment of workforce diversity, focusing
+              to promote inclusive hiring in various industries & aiming to create an environment where
+              equal opportunities are plentiful for Women, Specially-abled people, & LGBTQ+. We take
+              great joy in leveraging our expertise to bring unparalleled diversity to the world of
+              employment.
+            </p>
+            <Link
+              to="/diversity"
+              className="inline-block px-6 py-3 rounded-full bg-emerald-600 text-white font-medium hover:bg-emerald-700 transition duration-200"
+            >
+              Learn more about AshaJobs →
+            </Link>
           </div>
-          <div
-          className="flex justify-center items-start ml-2"
-        >
-          <img
-            src="ashaimg.webp"
-            alt="Our Team"
-            className="rounded-2xl shadow-lg object-cover w-auto border border-emerald-200 h-3/4"
-          />
-        </div>
+          <div className="flex justify-center items-start">
+            <img
+              src="ashaimg.webp"
+              alt="Our Team"
+              className="rounded-2xl shadow-lg object-cover max-w-sm w-full h-auto border border-emerald-200"
+            />
+
+          </div>
         </motion.div>
       </section>
 
       {/* Divider */}
-      <div className="w-full h-16 bg-gradient-to-b from-emerald-50 to-white -skew-y-2"></div>
+      <div className="w-full h-16 bg-gradient-to-b from-emerald-50 to-white -skew-y-2 overflow-hidden"></div>
 
       {/* Mission / Vision / Values */}
-      <section className="py-24 px-6 bg-gradient-to-r from-emerald-50 to-lime-50">
+      <section className="py-24 px-6 bg-gradient-to-r from-emerald-50 to-lime-50 overflow-hidden">
         <div className="container mx-auto flex flex-col items-center text-center">
           <h2 className="text-4xl font-bold mb-12 text-primary">
             Our Mission, Vision & Values
@@ -162,14 +156,15 @@ const AboutUs: React.FC = () => {
                 animate={selected === item ? "active" : "inactive"}
                 viewport={{ once: true }}
                 onClick={() => setSelected(item)}
-                className={`p-4 rounded-lg cursor-pointer border border-emerald-600 ${
-                  selected === item ? "bg-emerald-600 text-white" : "bg-background text-primary"
-                }`}
+                className={`p-4 rounded-lg cursor-pointer border border-emerald-600 ${selected === item
+                    ? "bg-emerald-600 text-white"
+                    : "bg-background text-primary"
+                  }`}
               >
-                <h3 className="text-lg font-semibold">{item.charAt(0).toUpperCase() + item.slice(1)}</h3>
-                {selected === item && (
-                  <p className="mt-2 text-sm">{content[item]}</p>
-                )}
+                <h3 className="text-lg font-semibold">
+                  {item.charAt(0).toUpperCase() + item.slice(1)}
+                </h3>
+                {selected === item && <p className="mt-2 text-sm">{content[item]}</p>}
               </motion.div>
             ))}
           </div>
@@ -177,42 +172,12 @@ const AboutUs: React.FC = () => {
       </section>
 
       {/* Divider */}
-      {/* <div className="w-full h-16 bg-gradient-to-b from-white to-emerald-50 skew-y-2"></div> */}
-
-      {/* <section className="py-20 px-6 bg-gradient-to-r from-emerald-50 to-lime-50"> */}
-        {/* Partners Section */}
-              {/* <motion.section
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="py-20 px-6 bg-gradient-to-r from-emerald-50 to-lime-50"
-              >
-                <div className="container text-center space-y-10">
-                  <h2 className="text-3xl font-bold">Our Clients</h2>
-                  <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
-                    {partnerLogos.map((logo, idx) => (
-                      <div key={idx} className="flex items-center justify-center">
-                        <img
-                          src={logo}
-                          alt={`Partner ${idx + 1}`}
-                          className="h-24 w-auto object-contain"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.section> */}
-
-      {/* Divider */}
-      <div className="w-full h-16 bg-gradient-to-b from-emerald-50 to-white -skew-y-2"></div>
+      <div className="w-full h-16 bg-gradient-to-b from-emerald-50 to-white -skew-y-2 overflow-hidden"></div>
 
       {/* Leadership */}
-      <section className="py-24 px-6 bg-gradient-to-r from-emerald-50 to-lime-50">
+      <section className="py-24 px-6 bg-gradient-to-r from-emerald-50 to-lime-50 overflow-hidden">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-12 text-primary">
-            Meet Our Leadership
-          </h2>
+          <h2 className="text-4xl font-bold mb-12 text-primary">Meet Our Leadership</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
             {[
               { name: "Prateek Jadia", role: "Managing Director", img: "leaders/Prateek.jpg" },
