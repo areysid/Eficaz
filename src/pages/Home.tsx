@@ -139,8 +139,8 @@ const Home = () => {
         className="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white py-3 px-4 flex flex-col md:flex-row items-center justify-between gap-3 shadow-lg mt-16"
       >
         <p className="text-center text-sm md:text-base font-medium">
-          📢 <span className="font-semibold">Upcoming Webinar:</span> HR Dashboards using Power BI on{" "}
-          <span className="underline">25th October</span>
+          📢 <span className="font-semibold">Upcoming Webinar:</span> Learn HR Dashboards using Power BI on{" "}
+          <span className="underline">31st October</span>
         </p>
         <Button
           variant="secondary"
@@ -301,7 +301,7 @@ const Home = () => {
               </Button>
 
               <Button asChild variant="outline" size="lg">
-                <a href="/webinars">Visit Webinar Page</a>
+                <a href="https://learning.eficazindia.com/services/dxjq">Reserve Your Seat</a>
               </Button>
             </div>
           </div>
