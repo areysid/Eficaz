@@ -301,7 +301,11 @@ const Home = () => {
               </Button>
 
               <Button asChild variant="outline" size="lg">
-                <a href="https://learning.eficazindia.com/services/dxjq">Reserve Your Seat</a>
+                <a href="https://learning.eficazindia.com/services/dxjq"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  >
+                  Reserve Your Seat</a>
               </Button>
             </div>
           </div>
