@@ -290,9 +290,9 @@ const Home = () => {
 
             {/* 👇 CTA Buttons */}
             <div className="flex flex-wrap gap-4 pt-2">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
+               <Button asChild variant="outline" size="lg">
                 <a
-                  href="https://wa.me/911234567890?text=Hi!%20I'm%20interested%20in%20your%20upcoming%20webinar."
+                  href="https://wa.me/918767311948"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -300,7 +300,7 @@ const Home = () => {
                 </a>
               </Button>
 
-              <Button asChild variant="outline" size="lg">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
                 <a href="https://learning.eficazindia.com/services/dxjq"
                   target="_blank" 
                   rel="noopener noreferrer"
