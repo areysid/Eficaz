@@ -30,16 +30,16 @@ const Diversity = () => {
       link: "/diversity/blog1",
     },
     {
-      title: "Breaking Myths About Inclusive Hiring",
-      desc: "Challenging common misconceptions around DEI in the workplace.",
-      img: "/blogs/blog2.png",
-      link: "/diversity/blog1",
+      title: "Tips for Diversity Inclusion",
+      desc: "9 Tips To Bring Your Diversity Inclusion Operations into Full Swing",
+      img: "/blogs/blog2.jpg",
+      link: "/diversity/blog2",
     },
     {
-      title: "Building Sustainable DEI Strategies",
-      desc: "A roadmap to long-term and impactful diversity initiatives.",
+      title: "Importance of Diversity Hiring",
+      desc: "Explore the growing importance of diversity in recruitment across India.",
       img: "/blogs/blog3.jpg",
-      link: "/diversity/blog1",
+      link: "/diversity/blog3",
     },
   ];
 
