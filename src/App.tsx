@@ -13,6 +13,8 @@ import Services from "./pages/Services";
 import CoursesPage from "./pages/courses";
 import Diversity from "./pages/Diversity";
 import Blog1 from "./pages/Blog1";
+import Blog2 from "./pages/Blog2";
+import Blog3 from "./pages/Blog3";
 import JobList from "@/components/joblist";
 
 const queryClient = new QueryClient();
@@ -38,6 +40,8 @@ const App = () => {
               <Route path="/courses" element={<CoursesPage />} />
               <Route path="/diversity" element={<Diversity />} />
               <Route path="/diversity/blog1" element={<Blog1 />} />
+              <Route path="/diversity/blog2" element={<Blog2 />} />
+              <Route path="/diversity/blog3" element={<Blog3 />} />
               <Route path="/career" element={<JobList />} />
 
               {/* Fallback: redirect unknown routes to root */}
