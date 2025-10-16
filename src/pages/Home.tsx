@@ -136,7 +136,7 @@ const Home = () => {
         initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white py-3 px-4 flex flex-col md:flex-row items-center justify-between gap-3 shadow-lg mt-16"
+        className="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white py-3 px-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 shadow-lg mt-16"
       >
         <p className="text-sm md:text-base font-medium">
           📢 <span className="font-semibold">Upcoming Webinars:</span> <br></br> HR Dashboards using Power BI on{" "}
