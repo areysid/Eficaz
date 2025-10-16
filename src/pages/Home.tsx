@@ -256,7 +256,7 @@ const Home = () => {
             <button
               key={idx}
               onClick={() => setCurrentSlide(idx)}
-              className={`h-3 w-3 rounded-full ${currentSlide === idx ? "bg-white" : "bg-white/50"
+              className={`md:h-3 md:w-3 h-2 w-2 rounded-full ${currentSlide === idx ? "bg-white" : "bg-white/50"
                 }`}
             />
           ))}
