@@ -181,9 +181,9 @@ const AboutUs: React.FC = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
             {[
               { name: "Prateek Jadia", role: "Managing Director", img: "leaders/Prateek.jpg" },
-              { name: "Neha Jadia", role: "CEO", img: "leaders/neha.jpg" },
+              { name: "Neha Jadia", role: "CEO", img: "leaders/neha.jpeg" },
               { name: "Pragya Chandak", role: "Client Partner", img: "leaders/rinki.jpg" },
-              { name: "Manisha Singh", role: "Sourcing Lead", img: "leaders/manisha.jpg" },
+              { name: "Manisha Singh", role: "Sourcing Lead", img: "leaders/manisha.jpeg" },
             ].map((leader, i) => (
               <motion.div
                 key={i}
