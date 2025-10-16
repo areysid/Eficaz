@@ -228,7 +228,7 @@ const Home = () => {
       </motion.section>
 
       {/* Hero Carousel */}
-      <section className="relative w-full h-[20vh] sm:h-[50vh] overflow-hidden bg-black flex items-center">
+      <section className="relative w-full h-[15vh] sm:h-[50vh] overflow-hidden bg-black flex items-center">
         <div
           className="flex transition-transform duration-1000 h-full"
           style={{
