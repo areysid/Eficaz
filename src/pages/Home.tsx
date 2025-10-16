@@ -311,8 +311,10 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="flex justify-center">
-            <WebinarTimeline />
+          <div className="flex justify-center w-full sm:w-auto sm:justify-center px-4 sm:px-0">
+           <div className="w-full max-w-md sm:max-w-xl">
+             <WebinarTimeline />
+           </div>
           </div>
         </div>
       </motion.section>
