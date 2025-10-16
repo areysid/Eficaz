@@ -138,9 +138,11 @@ const Home = () => {
         transition={{ duration: 0.5 }}
         className="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white py-3 px-4 flex flex-col md:flex-row items-center justify-between gap-3 shadow-lg mt-16"
       >
-        <p className="text-center text-sm md:text-base font-medium">
-          📢 <span className="font-semibold">Upcoming Webinar:</span> Learn HR Dashboards using Power BI on{" "}
-          <span className="underline">31st October</span>
+        <p className="text-sm md:text-base font-medium">
+          📢 <span className="font-semibold">Upcoming Webinars:</span> <br></br> HR Dashboards using Power BI on{" "}
+          <span className="underline">1st November</span> in both English & Hindi!
+          <br></br> HR Dashboards using Looker Studio on{" "}
+          <span className="underline">2nd November</span> in both English & Hindi!
         </p>
         <Button
           variant="secondary"
