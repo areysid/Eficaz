@@ -211,7 +211,7 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg mx-4">
                     <div className="text-2xl font-bold text-primary mb-2">
                       Diversity & Inclusion
                     </div>
