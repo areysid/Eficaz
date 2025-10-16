@@ -200,7 +200,7 @@ const AboutUs: React.FC = () => {
                   />
                 </div>
                 <h3 className="mt-4 font-semibold text-primary">{leader.name}</h3>
-                <p className="text-sm text-muted-foreground">{leader.role}</p>
+                // <p className="text-sm text-muted-foreground">{leader.role}</p>
               </motion.div>
             ))}
           </div>
