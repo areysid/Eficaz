@@ -79,22 +79,26 @@ const WebinarTimeline = () => {
   const webinar = webinars[currentIndex];
 
   return (
-    <section id="webinars" ref={sectionRef} className="py-8 relative">
-      <div className="container">
-        <div className="max-w-2xl text-center">
+    <section
+      id="webinars"
+      ref={sectionRef}
+      className="py-8 relative px-4 sm:px-6 lg:px-8"
+    >
+      <div className="mx-auto w-full max-w-4xl">
+        <div className="text-center">
           <Badge variant="secondary">
             <Video className="mr-1 h-4 w-4" /> Upcoming Webinars
           </Badge>
         </div>
 
         <motion.div
-          className="mx-auto mt-4 max-w-3xl"
+          className="mx-auto mt-4 w-full"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          <Card className="relative overflow-hidden border border-green-100/20 shadow-lg backdrop-blur-md bg-white/60 p-8 hover:bg-white/80 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 rounded-2xl">
+          <Card className="relative overflow-hidden border border-green-100/20 shadow-lg backdrop-blur-md bg-white/60 p-4 sm:p-6 md:p-8 hover:bg-white/80 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 rounded-2xl">
             <CardHeader className="flex flex-col items-center text-center">
               <motion.div
                 whileHover={{ scale: 1.2, rotate: 10 }}
@@ -103,12 +107,12 @@ const WebinarTimeline = () => {
                 <CalendarIcon className="h-6 w-6 text-accent" />
               </motion.div>
 
-              <CardTitle className="text-2xl text-accent font-bold">
+              <CardTitle className="text-xl sm:text-2xl text-accent font-bold">
                 {webinar.title}
               </CardTitle>
 
-              <CardDescription className="mt-2 text-green-800">
-                <div className="text-sm text-muted-foreground mb-2">
+              <CardDescription className="mt-2 text-green-800 text-sm sm:text-base">
+                <div className="text-xs sm:text-sm text-muted-foreground mb-2">
                   {new Date(webinar.date).toLocaleDateString(undefined, {
                     weekday: "short",
                     year: "numeric",
@@ -119,7 +123,7 @@ const WebinarTimeline = () => {
                 {webinar.description}
               </CardDescription>
 
-              <div className="flex justify-between items-center pt-5 w-full px-8">
+              <div className="flex justify-between items-center pt-5 w-full max-w-xs sm:max-w-md mx-auto">
                 <button
                   onClick={handlePrev}
                   className="p-2 text-green-700 hover:bg-green-100 rounded-full transition"
